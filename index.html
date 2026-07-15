@@ -12,102 +12,199 @@
     
     <style>
         body {
+            /* Soft Whimsical Background */
             background: radial-gradient(circle at top left, #fdf4f4, #f0fdf4);
-            min-height: 100vh;
+            background-attachment: fixed;
+            color: #166534; /* Emerald green text base */
+            overflow-x: hidden;
         }
 
-        /* Whimsical Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
+        /* Floral Corner Decorations (Fixed to screen) */
+        .floral-bg {
+            position: fixed;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
         }
-        .float-animation { animation: float 6s ease-in-out infinite; }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        .sway-animation { animation: sway 8s ease-in-out infinite; }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
+        /* Delays for cascading animations */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
     </style>
 </head>
-<body class="flex items-center justify-center p-4">
+<body class="font-sans antialiased relative selection:bg-pink-200">
 
-    <!-- Mobile-sized Container -->
-    <main class="glass-card max-w-md w-full mx-auto rounded-[3rem] shadow-2xl overflow-hidden relative">
-        
-        <!-- Whimsical Floral Elements -->
-        <div class="absolute -top-10 -left-10 w-40 h-40 float-animation opacity-60">
-            <svg viewBox="0 0 100 100" class="w-full h-full text-pink-300 fill-current">
-                <path d="M50 0c15 10 25 30 20 50s-20 20-40 20-25-10-20-30S35 0 50 0z"/>
-                <path d="M70 20c15 10 20 25 10 40s-25 10-35-5S55 10 70 20z"/>
-            </svg>
-        </div>
-        <div class="absolute -bottom-10 -right-10 w-48 h-48 float-animation opacity-60" style="animation-delay: 2s;">
-            <svg viewBox="0 0 100 100" class="w-full h-full text-green-300 fill-current">
-                <path d="M20 80c20 20 50 10 60-10s0-40-30-40-40 20-30 50z"/>
-                <path d="M40 60c10 20 30 15 35 0s-5-25-20-25-25 10-15 25z"/>
-            </svg>
-        </div>
+    <!-- Fixed Background Florals -->
+    <div class="floral-bg -top-16 -left-16 w-64 h-64 sway-animation">
+        <svg viewBox="0 0 100 100" class="w-full h-full text-pink-300 fill-current opacity-50">
+            <path d="M50 0c15 10 25 30 20 50s-20 20-40 20-25-10-20-30S35 0 50 0z"/>
+            <path d="M70 20c15 10 20 25 10 40s-25 10-35-5S55 10 70 20z"/>
+        </svg>
+    </div>
+    <div class="floral-bg -bottom-16 -right-16 w-80 h-80 sway-animation" style="animation-delay: -4s;">
+        <svg viewBox="0 0 100 100" class="w-full h-full text-green-300 fill-current opacity-40">
+            <path d="M20 80c20 20 50 10 60-10s0-40-30-40-40 20-30 50z"/>
+            <path d="M40 60c10 20 30 15 35 0s-5-25-20-25-25 10-15 25z"/>
+        </svg>
+    </div>
 
-        <div class="px-8 pt-16 pb-12 flex flex-col items-center text-center relative z-10">
+    <main class="max-w-md mx-auto relative z-10">
+
+        <!-- SECTION 1: Giant "You are invited" -->
+        <section class="h-screen flex flex-col justify-center items-center text-center p-6 relative">
+            <h1 class="font-script text-7xl md:text-8xl text-emerald-900 leading-tight reveal drop-shadow-sm">
+                You are<br>invited
+            </h1>
+            <div class="absolute bottom-10 animate-bounce text-emerald-800/50 reveal delay-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Name & Occasion -->
+        <section class="min-h-screen flex flex-col justify-center items-center text-center p-8 space-y-6">
+            <p class="font-sans text-sm tracking-[0.3em] uppercase text-emerald-800/80 reveal">To the</p>
+            <h2 class="font-serif text-5xl italic text-emerald-900 reveal delay-100">Holy Baptism</h2>
+            <p class="font-sans text-sm tracking-[0.3em] uppercase text-emerald-800/80 reveal delay-200">of</p>
+            <h3 class="font-script text-6xl text-emerald-900 reveal delay-300 pt-4">Kiarra Leigh <br> D. Catamio</h3>
+        </section>
+
+        <!-- SECTION 3: Large Details Summary -->
+        <section class="min-h-[80vh] flex flex-col justify-center items-center text-center p-8 space-y-16">
+            <div class="reveal">
+                <p class="font-script text-4xl text-emerald-800 mb-2">Saturday</p>
+                <p class="font-serif text-2xl text-emerald-950 font-semibold tracking-wide">August 29, 2026</p>
+            </div>
             
-            <p class="font-sans text-xs tracking-[0.3em] uppercase text-emerald-800 mb-2 opacity-80">You are invited to the</p>
-            <h1 class="font-serif text-4xl italic text-emerald-900 mb-6">Holy Baptism</h1>
+            <div class="reveal delay-100">
+                <p class="font-script text-4xl text-emerald-800 mb-2">Church</p>
+                <p class="font-serif text-2xl text-emerald-950 font-semibold tracking-wide">Holy Family<br>Parish Church</p>
+            </div>
+
+            <div class="reveal delay-200">
+                <p class="font-script text-4xl text-emerald-800 mb-2">Venue</p>
+                <p class="font-serif text-2xl text-emerald-950 font-semibold tracking-wide">Parang Pavillion</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Event Details, Map Links & Cutout Baby Image -->
+        <section class="min-h-screen flex flex-col justify-center items-center p-8 mt-12">
+            <h2 class="font-serif text-4xl italic text-emerald-900 mb-12 text-center reveal">Event Details</h2>
+
+            <!-- Church Block -->
+            <div class="bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white shadow-xl w-full flex flex-col items-center text-center space-y-4 mb-8 reveal delay-100">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mb-2">
+                    <!-- Church Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                </div>
+                <p class="font-serif text-xl font-bold text-gray-800">9:00 AM</p>
+                <p class="font-sans font-medium text-emerald-900">Holy Family Parish Church</p>
+                <a href="#" class="mt-4 inline-block bg-emerald-700 text-white font-sans text-sm tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg hover:bg-emerald-800 transition-colors">
+                    View Map
+                </a>
+            </div>
+
+            <!-- Reception Block -->
+            <div class="bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white shadow-xl w-full flex flex-col items-center text-center space-y-4 mb-16 reveal delay-200">
+                <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-2">
+                    <!-- Venue/Plate Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
+                </div>
+                <p class="font-serif text-xl font-bold text-gray-800">10:30 AM</p>
+                <p class="font-sans font-medium text-emerald-900">Parang Pavillion</p>
+                <a href="#" class="mt-4 inline-block bg-emerald-700 text-white font-sans text-sm tracking-wider uppercase px-6 py-2.5 rounded-full shadow-lg hover:bg-emerald-800 transition-colors">
+                    View Map
+                </a>
+            </div>
+
+            <!-- Cutout Baby Image (Background Removed) -->
+            <div class="relative w-full max-w-[280px] reveal delay-300">
+                <!-- Decorative blob behind baby -->
+                <div class="absolute inset-0 bg-pink-200/50 rounded-full blur-3xl transform scale-110 -z-10"></div>
+                <!-- TODO: Change 'baby-nobg.png' to your actual image file with removed background -->
+                <img src="baby-nobg.png" alt="Baby Kiarra" class="w-full h-auto drop-shadow-2xl" onerror="this.outerHTML='<div class=\'w-full h-64 bg-gray-200 rounded-3xl flex items-center justify-center text-gray-500 font-sans text-sm\'>baby-nobg.png here</div>'">
+            </div>
+        </section>
+
+        <!-- SECTION 5: Reminders & Dress Code -->
+        <section class="min-h-[70vh] flex flex-col justify-center items-center text-center p-8 space-y-12">
+            <div class="reveal">
+                <h3 class="font-script text-5xl text-emerald-800 mb-4">Dress Code</h3>
+                <p class="font-sans text-emerald-900 leading-relaxed bg-white/40 p-6 rounded-2xl shadow-sm border border-white/50 backdrop-blur-sm">
+                    Please join us in your best <strong>pastel or light-colored</strong> attire to match our whimsical theme. 
+                </p>
+            </div>
+
+            <div class="reveal delay-100 w-full">
+                <h3 class="font-script text-5xl text-emerald-800 mb-4">Reminders</h3>
+                <div class="font-sans text-emerald-900 space-y-4 bg-white/40 p-6 rounded-2xl shadow-sm border border-white/50 backdrop-blur-sm">
+                    <p>Your presence is the greatest gift! If you wish to bless Kiarra, monetary gifts are deeply appreciated.</p>
+                    <hr class="border-emerald-900/10">
+                    <p class="font-semibold">Please RSVP by August 15</p>
+                    <p>[Insert Contact Number]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Final Image & Goodbye -->
+        <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 pb-20 space-y-10">
+            <!-- Big Final Image -->
+            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white reveal">
+                <!-- TODO: Change 'baby-last.jpg' to your big final image -->
+                <img src="baby-last.jpg" alt="Baby Kiarra" class="w-full h-auto object-cover aspect-[4/5]" onerror="this.outerHTML='<div class=\'w-full aspect-[4/5] bg-gray-200 flex items-center justify-center text-gray-500 font-sans text-sm\'>baby-last.jpg here</div>'">
+            </div>
             
-            <!-- Baby Image -->
-            <div class="relative mb-8">
-                <div class="absolute inset-[-10px] border-2 border-dashed border-pink-300 rounded-full animate-[spin_20s_linear_infinite]"></div>
-                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gray-100">
-                    <img src="baby.png" alt="Baby's Photo" class="w-full h-full object-cover">
-                </div>
-            </div>
+            <h2 class="font-script text-5xl md:text-6xl text-emerald-900 reveal delay-200 drop-shadow-sm">
+                See you on my<br>special day!
+            </h2>
+        </section>
 
-            <h2 class="font-script text-5xl text-emerald-900 mb-8">Kiarra Leigh D. Catamio</h2>
-
-            <div class="w-full space-y-6 text-left border-y border-emerald-900/10 py-8">
-                
-                <!-- Date -->
-                <div class="flex items-center gap-4">
-                    <div class="text-pink-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                    </div>
-                    <div>
-                        <p class="font-serif font-bold text-gray-800">Saturday, August 29, 2026</p>
-                        <p class="font-sans text-sm text-gray-600">9:00 AM</p>
-                    </div>
-                </div>
-
-                <!-- Church -->
-                <div class="flex items-center gap-4">
-                    <div class="text-emerald-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                    </div>
-                    <div>
-                        <p class="font-serif font-bold text-gray-800">Holy Family Parish Church</p>
-                        <p class="font-sans text-sm text-gray-600">Baptismal Ceremony</p>
-                    </div>
-                </div>
-
-                <!-- Reception -->
-                <div class="flex items-center gap-4">
-                    <div class="text-orange-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
-                    </div>
-                    <div>
-                        <p class="font-serif font-bold text-gray-800">Parang Pavillion</p>
-                        <p class="font-sans text-sm text-gray-600">Lunch Reception to follow</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="mt-8 text-center">
-                <p class="font-sans text-sm text-gray-500 italic">Please kindly RSVP by August 15</p>
-                <p class="font-sans font-medium text-emerald-800 mt-2">[Insert Contact Number]</p>
-            </div>
-
-        </div>
     </main>
 
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: Stop observing once revealed if you don't want it to fade out on scroll up
+                        // observer.unobserve(entry.target); 
+                    } else {
+                        // Remove this else block if you want the elements to stay visible once scrolled past
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15, // Triggers when 15% of the element is visible
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
 </body>
 </html>
