@@ -3,144 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baptism Invitation</title>
+    <title>Kiarra's Baptism</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        script: ['"Great Vibes"', 'cursive'],
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Poppins"', 'sans-serif'],
-                    },
-                    colors: {
-                        floral: {
-                            light: '#fdfbf7',
-                            pink: '#f4e3e3',
-                            green: '#e2ece4',
-                            darkGreen: '#4a6750',
-                            text: '#4a4a4a'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
-        /* Custom Floral Background Pattern */
         body {
-            background-color: #fdfbf7;
-            background-image: radial-gradient(#f4e3e3 1px, transparent 1px), radial-gradient(#e2ece4 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
+            background: radial-gradient(circle at top left, #fdf4f4, #f0fdf4);
+            min-height: 100vh;
         }
+
+        /* Whimsical Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        .float-animation { animation: float 6s ease-in-out infinite; }
+        
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 text-floral-text">
+<body class="flex items-center justify-center p-4">
 
     <!-- Mobile-sized Container -->
-    <main class="glass-card max-w-md w-full mx-auto rounded-3xl shadow-xl overflow-hidden relative border border-floral-pink/50">
+    <main class="glass-card max-w-md w-full mx-auto rounded-[3rem] shadow-2xl overflow-hidden relative">
         
-        <!-- Top Floral Decoration (SVG) -->
-        <div class="absolute top-0 left-0 w-full flex justify-between pointer-events-none opacity-80">
-            <svg width="120" height="120" viewBox="0 0 100 100" class="text-floral-pink fill-current transform -translate-x-4 -translate-y-4">
-                <path d="M50 0 C60 30 80 40 100 50 C80 60 60 70 50 100 C40 70 20 60 0 50 C20 40 40 30 50 0 Z"/>
+        <!-- Whimsical Floral Elements -->
+        <div class="absolute -top-10 -left-10 w-40 h-40 float-animation opacity-60">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-pink-300 fill-current">
+                <path d="M50 0c15 10 25 30 20 50s-20 20-40 20-25-10-20-30S35 0 50 0z"/>
+                <path d="M70 20c15 10 20 25 10 40s-25 10-35-5S55 10 70 20z"/>
             </svg>
-            <svg width="100" height="100" viewBox="0 0 100 100" class="text-floral-green fill-current transform translate-x-4 -translate-y-4">
-                <path d="M50 0 C60 30 80 40 100 50 C80 60 60 70 50 100 C40 70 20 60 0 50 C20 40 40 30 50 0 Z"/>
+        </div>
+        <div class="absolute -bottom-10 -right-10 w-48 h-48 float-animation opacity-60" style="animation-delay: 2s;">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-green-300 fill-current">
+                <path d="M20 80c20 20 50 10 60-10s0-40-30-40-40 20-30 50z"/>
+                <path d="M40 60c10 20 30 15 35 0s-5-25-20-25-25 10-15 25z"/>
             </svg>
         </div>
 
         <div class="px-8 pt-16 pb-12 flex flex-col items-center text-center relative z-10">
             
-            <p class="font-sans text-sm tracking-[0.2em] uppercase text-floral-darkGreen mb-4">You are invited to the</p>
-            <h1 class="font-serif text-3xl font-semibold italic text-gray-800 mb-6">Holy Baptism</h1>
+            <p class="font-sans text-xs tracking-[0.3em] uppercase text-emerald-800 mb-2 opacity-80">You are invited to the</p>
+            <h1 class="font-serif text-4xl italic text-emerald-900 mb-6">Holy Baptism</h1>
             
-            <!-- Baby Image Placeholder -->
-            <div class="relative mb-6">
-                <!-- Decorative Ring -->
-                <div class="absolute inset-[-8px] border-[3px] border-floral-pink rounded-full border-dashed animate-[spin_30s_linear_infinite]"></div>
-                <div class="absolute inset-[-14px] border-[1px] border-floral-green rounded-full"></div>
-                
-                <!-- Image Wrapper -->
-                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg bg-gray-100 flex items-center justify-center relative z-10">
-                    <!-- TODO: Replace 'baby.jpg' with your actual image file -->
-                    <img src="baby.png" alt="Baby's Photo" class="w-full h-full object-cover" onerror="this.outerHTML='<span class=\'font-sans text-xs text-gray-400\'>Your Image Here</span>'">
+            <!-- Baby Image -->
+            <div class="relative mb-8">
+                <div class="absolute inset-[-10px] border-2 border-dashed border-pink-300 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gray-100">
+                    <img src="baby.png" alt="Baby's Photo" class="w-full h-full object-cover">
                 </div>
             </div>
 
-            <p class="font-script text-5xl text-floral-darkGreen mb-8 mt-2 drop-shadow-sm">Kiarra Leigh D. Catamio</p>
+            <h2 class="font-script text-5xl text-emerald-900 mb-8">Kiarra Leigh D. Catamio</h2>
 
-            <div class="w-full space-y-6 text-left border-t border-b border-floral-green/50 py-6">
+            <div class="w-full space-y-6 text-left border-y border-emerald-900/10 py-8">
                 
-                <!-- Date & Time -->
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-floral-pink/30 flex items-center justify-center text-rose-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5M12 15h.008v.008H12V15Z" />
-                        </svg>
+                <!-- Date -->
+                <div class="flex items-center gap-4">
+                    <div class="text-pink-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                     </div>
                     <div>
-                        <h3 class="font-serif font-semibold text-gray-800 text-lg">Saturday, August 29, 2026</h3>
-                        <p class="font-sans text-sm text-gray-600 mt-0.5">at 9:00 in the morning</p>
+                        <p class="font-serif font-bold text-gray-800">Saturday, August 29, 2026</p>
+                        <p class="font-sans text-sm text-gray-600">9:00 AM</p>
                     </div>
                 </div>
 
-                <!-- Ceremony -->
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-floral-green/40 flex items-center justify-center text-teal-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-                        </svg>
+                <!-- Church -->
+                <div class="flex items-center gap-4">
+                    <div class="text-emerald-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                     </div>
                     <div>
-                        <h3 class="font-serif font-semibold text-gray-800 text-lg">Holy Family Parish Church</h3>
-                        <p class="font-sans text-sm text-gray-600 mt-0.5">Baptismal Ceremony</p>
+                        <p class="font-serif font-bold text-gray-800">Holy Family Parish Church</p>
+                        <p class="font-sans text-sm text-gray-600">Baptismal Ceremony</p>
                     </div>
                 </div>
 
                 <!-- Reception -->
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.82 1.508-2.316a7.5 7.5 0 1 0-7.516 0c.85.496 1.508 1.333 1.508 2.316V18w4.5Z" />
-                        </svg>
+                <div class="flex items-center gap-4">
+                    <div class="text-orange-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
                     </div>
                     <div>
-                        <h3 class="font-serif font-semibold text-gray-800 text-lg">Parang Pavillion</h3>
-                        <p class="font-sans text-sm text-gray-600 mt-0.5">Lunch Reception to follow</p>
+                        <p class="font-serif font-bold text-gray-800">Parang Pavillion</p>
+                        <p class="font-sans text-sm text-gray-600">Lunch Reception to follow</p>
                     </div>
                 </div>
 
             </div>
 
-            <div class="mt-8">
-                <p class="font-serif italic text-gray-600 text-sm mb-1">Please RSVP by August 15, 2026</p>
-                <p class="font-sans font-medium text-floral-darkGreen text-sm">[Add Contact Number]</p>
+            <div class="mt-8 text-center">
+                <p class="font-sans text-sm text-gray-500 italic">Please kindly RSVP by August 15</p>
+                <p class="font-sans font-medium text-emerald-800 mt-2">[Insert Contact Number]</p>
             </div>
 
-        </div>
-
-        <!-- Bottom Floral Decoration (SVG) -->
-        <div class="absolute bottom-0 right-0 w-full flex justify-between pointer-events-none opacity-80 rotate-180">
-            <svg width="100" height="100" viewBox="0 0 100 100" class="text-floral-pink fill-current transform -translate-x-4 -translate-y-4">
-                <path d="M50 0 C60 30 80 40 100 50 C80 60 60 70 50 100 C40 70 20 60 0 50 C20 40 40 30 50 0 Z"/>
-            </svg>
         </div>
     </main>
 
