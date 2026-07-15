@@ -24,13 +24,13 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Pastel Floral Corners */
+        /* Fixed Pastel Floral Corners - made larger with drop shadow */
         .floral-corner {
             position: fixed;
             z-index: -1;
             pointer-events: none;
             opacity: 0.85;
-            filter: drop-shadow(0 10px 15px rgba(252, 213, 206, 0.3));
+            filter: drop-shadow(0 15px 25px rgba(252, 213, 206, 0.4));
         }
 
         @keyframes sway {
@@ -41,10 +41,10 @@
 
         /* Floating Petals Animation */
         @keyframes drift {
-            0% { transform: translateY(-5vh) rotate(0deg) translateX(0); opacity: 0; }
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
             10% { opacity: 0.8; }
             90% { opacity: 0.8; }
-            100% { transform: translateY(105vh) rotate(360deg) translateX(20px); opacity: 0; }
+            100% { transform: translateY(105vh) rotate(360deg) translateX(40px); opacity: 0; }
         }
         .petal {
             position: fixed;
@@ -80,23 +80,23 @@
 </head>
 <body class="font-sans antialiased relative selection:bg-pink-200">
 
-    <!-- Floating Pastel Petals (Generated via CSS) -->
-    <div class="petal text-pink-300 left-[10%] top-0 w-4 h-4" style="animation-duration: 12s; animation-delay: 0s;">
+    <!-- BIG Floating Pastel Petals -->
+    <div class="petal text-pink-300 left-[10%] top-0 w-8 h-8 md:w-10 md:h-10" style="animation-duration: 12s; animation-delay: 0s;">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
     </div>
-    <div class="petal text-peach-200 left-[80%] top-0 w-3 h-3 text-[#ffb5a7]" style="animation-duration: 15s; animation-delay: 2s;">
+    <div class="petal text-peach-200 left-[80%] top-0 w-6 h-6 md:w-8 md:h-8 text-[#ffb5a7]" style="animation-duration: 15s; animation-delay: 2s;">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
     </div>
-    <div class="petal text-purple-200 left-[40%] top-0 w-5 h-5 text-[#e8e8f2]" style="animation-duration: 18s; animation-delay: 5s;">
+    <div class="petal text-purple-200 left-[40%] top-0 w-10 h-10 md:w-12 md:h-12 text-[#e8e8f2]" style="animation-duration: 18s; animation-delay: 5s;">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
     </div>
-    <div class="petal text-green-200 left-[65%] top-0 w-4 h-4 text-[#d8e2dc]" style="animation-duration: 14s; animation-delay: 7s;">
+    <div class="petal text-green-200 left-[65%] top-0 w-7 h-7 md:w-9 md:h-9 text-[#d8e2dc]" style="animation-duration: 14s; animation-delay: 7s;">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
     </div>
 
-    <!-- Top Left Whimsical Floral Cluster -->
-    <div class="floral-corner -top-12 -left-12 w-72 h-72 sway-animation origin-top-left">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- HUGE Top Left Whimsical Floral Cluster -->
+    <div class="floral-corner -top-20 -left-20 w-[26rem] h-[26rem] md:w-[32rem] md:h-[32rem] sway-animation origin-top-left">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
             <!-- Leaves (Mint Green) -->
             <path d="M20 20 Q 60 10 80 50 Q 30 60 20 20 Z" fill="#d8e2dc" opacity="0.8"/>
             <path d="M15 30 Q 30 80 50 100 Q 10 90 15 30 Z" fill="#b9cec2" opacity="0.6"/>
@@ -110,9 +110,9 @@
         </svg>
     </div>
 
-    <!-- Bottom Right Whimsical Floral Cluster -->
-    <div class="floral-corner -bottom-16 -right-16 w-80 h-80 sway-animation origin-bottom-right" style="animation-delay: -3.5s;">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- HUGE Bottom Right Whimsical Floral Cluster -->
+    <div class="floral-corner -bottom-24 -right-24 w-[30rem] h-[30rem] md:w-[36rem] md:h-[36rem] sway-animation origin-bottom-right" style="animation-delay: -3.5s;">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
             <!-- Leaves -->
             <path d="M180 180 Q 140 190 120 150 Q 170 140 180 180 Z" fill="#d8e2dc" opacity="0.8"/>
             <path d="M170 160 Q 120 120 130 90 Q 180 110 170 160 Z" fill="#b9cec2" opacity="0.6"/>
@@ -129,15 +129,14 @@
 
         <!-- SECTION 1: Giant "You are invited" -->
         <section class="h-screen flex flex-col justify-center items-center text-center p-6 relative">
-            <!-- Small decorative flourish -->
-            <svg class="w-12 h-12 text-[#ffb5a7] mb-4 reveal drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
+            <svg class="w-14 h-14 text-[#ffb5a7] mb-4 reveal drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
             
             <h1 class="font-script text-7xl md:text-8xl text-[#2d4a3e] leading-tight reveal drop-shadow-sm">
                 You are<br>invited
             </h1>
             
             <div class="absolute bottom-10 animate-bounce text-[#ffb5a7] reveal delay-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
             </div>
         </section>
 
@@ -158,20 +157,19 @@
         <!-- SECTION 3: Large Details Summary -->
         <section class="min-h-[80vh] flex flex-col justify-center items-center text-center p-8 space-y-16">
             <div class="reveal relative">
-                <!-- Tiny background sparkle -->
-                <div class="absolute -top-4 -left-4 w-8 h-8 bg-[#ffe5d9] rounded-full blur-xl -z-10"></div>
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-[#ffe5d9] rounded-full blur-xl -z-10"></div>
                 <p class="font-script text-4xl text-[#ff9380] mb-2">Saturday</p>
                 <p class="font-serif text-2xl text-[#2d4a3e] font-semibold tracking-wide">August 29, 2026</p>
             </div>
             
             <div class="reveal delay-100 relative">
-                <div class="absolute -top-4 -right-4 w-10 h-10 bg-[#e8e8f2] rounded-full blur-xl -z-10"></div>
+                <div class="absolute -top-4 -right-4 w-12 h-12 bg-[#e8e8f2] rounded-full blur-xl -z-10"></div>
                 <p class="font-script text-4xl text-[#ff9380] mb-2">Church</p>
                 <p class="font-serif text-2xl text-[#2d4a3e] font-semibold tracking-wide leading-snug">Holy Family<br>Parish Church</p>
             </div>
 
             <div class="reveal delay-200 relative">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#d8e2dc] rounded-full blur-xl -z-10"></div>
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-14 h-14 bg-[#d8e2dc] rounded-full blur-xl -z-10"></div>
                 <p class="font-script text-4xl text-[#ff9380] mb-2">Venue</p>
                 <p class="font-serif text-2xl text-[#2d4a3e] font-semibold tracking-wide">Parang Pavillion</p>
             </div>
@@ -216,7 +214,7 @@
         <!-- SECTION 5: Reminders & Dress Code -->
         <section class="min-h-[70vh] flex flex-col justify-center items-center text-center p-8 space-y-12">
             <div class="reveal w-full">
-                <div class="flex justify-center mb-4"><svg class="w-8 h-8 text-[#d8e2dc]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg></div>
+                <div class="flex justify-center mb-4"><svg class="w-10 h-10 text-[#d8e2dc]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg></div>
                 <h3 class="font-script text-5xl text-[#ff9380] mb-6">Dress Code</h3>
                 <p class="font-sans text-[#2d4a3e] leading-relaxed pastel-glass p-8 rounded-3xl">
                     Please join us in your best <span class="font-semibold text-[#ff9380]">pastel or light-colored</span> attire to match our whimsical theme. 
