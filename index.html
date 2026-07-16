@@ -12,13 +12,12 @@
     
     <style>
         body {
-            /* Dreamy Pastel Mesh Background */
-            background-color: #fdfbfb;
-            background-image: 
-                radial-gradient(at 0% 0%, #ffe5d9 0px, transparent 50%),
-                radial-gradient(at 100% 0%, #d8e2dc 0px, transparent 50%),
-                radial-gradient(at 100% 100%, #fcd5ce 0px, transparent 50%),
-                radial-gradient(at 0% 100%, #e8e8f2 0px, transparent 50%);
+            /* Custom Image Background */
+            background-color: #fdfbfb; /* Fallback color */
+            background-image: url('background.jfif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             background-attachment: fixed;
             color: #2d4a3e;
             overflow-x: hidden;
@@ -138,8 +137,6 @@
 
         <!-- Door Text & Button Container -->
         <div id="door-button-container" class="absolute inset-0 pointer-events-none transition-opacity duration-700 z-50">
-            
-            
             <!-- Bottom Button -->
             <div class="absolute bottom-20 left-0 right-0 flex items-center justify-center">
                 <button onclick="openDoors()" class="pointer-events-auto pastel-glass font-serif italic text-xl px-12 py-4 rounded-full text-[#ff9380] shadow-[0_10px_40px_rgba(255,147,128,0.3)] hover:scale-105 hover:bg-white transition-all duration-300 animate-pulse border-2 border-white">
