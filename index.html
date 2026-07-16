@@ -12,18 +12,26 @@
     
     <style>
         body {
-            /* Custom Image Background with a soft white overlay for text readability */
             background-color: #fdfbfb;
-            /* The linear-gradient acts as a 65% white fade over your image */
+            color: #2d4a3e;
+            overflow-x: hidden;
+        }
+
+        /* Mobile-safe fixed background using a pseudo-element */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -5; /* Keeps it behind everything else */
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), 
                 url('background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #2d4a3e;
-            overflow-x: hidden;
         }
 
         /* Prevent scroll before doors open */
