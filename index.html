@@ -20,7 +20,7 @@
                 radial-gradient(at 100% 100%, #fcd5ce 0px, transparent 50%),
                 radial-gradient(at 0% 100%, #e8e8f2 0px, transparent 50%);
             background-attachment: fixed;
-            color: #2d4a3e; /* Soft Deep Sage Green */
+            color: #2d4a3e;
             overflow-x: hidden;
         }
 
@@ -83,43 +83,69 @@
             box-shadow: 0 8px 32px rgba(252, 213, 206, 0.2);
         }
 
-        /* Door Animation Styles */
+        /* REALISTIC DOOR ANIMATION STYLES */
+        #door-overlay {
+            /* This gives the 3D depth effect when doors swing */
+            perspective: 1500px; 
+        }
+        
         .door {
-            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            /* Smooth swinging cubic-bezier for a realistic heavy door feel */
+            transition: transform 1.5s cubic-bezier(0.64, 0.04, 0.35, 1);
+            transform-style: preserve-3d;
         }
-        .door-open-left {
-            transform: translateX(-100%);
-        }
-        .door-open-right {
-            transform: translateX(100%);
-        }
+        
+        /* Left door hinges on the left */
+        #left-door { transform-origin: left center; }
+        /* Right door hinges on the right */
+        #right-door { transform-origin: right center; }
+
+        /* The 3D swing rotation */
+        .door-open-left { transform: rotateY(-105deg); }
+        .door-open-right { transform: rotateY(105deg); }
     </style>
 </head>
 <body class="font-sans antialiased relative selection:bg-pink-200 locked-scroll">
 
     <!-- FRONT DOOR OVERLAY -->
-    <div id="door-overlay" class="fixed inset-0 z-[100] flex overflow-hidden bg-[#fdfbfb]">
+    <div id="door-overlay" class="fixed inset-0 z-[100] flex bg-transparent">
+        
         <!-- Left Door -->
-        <div id="left-door" class="door w-1/2 h-full bg-gradient-to-r from-[#fdfbfb] to-[#ffe5d9] border-r-2 border-white/50 shadow-[10px_0_30px_rgba(0,0,0,0.05)] relative flex flex-col items-end justify-center">
-            <!-- Decorative Half-Circle (Left) -->
-            <div class="w-16 h-32 border-4 border-white/70 border-r-0 rounded-l-full translate-x-[2px]"></div>
+        <div id="left-door" class="door w-1/2 h-full bg-[#fdfbfb] border-r-2 border-[#e8e8f2] shadow-[15px_0_30px_rgba(0,0,0,0.08)] relative flex items-center justify-end overflow-hidden">
+            <!-- Decorative Door Panels -->
+            <div class="absolute inset-4 md:inset-8 border border-[#d8e2dc] rounded-sm flex flex-col gap-4 p-4 pointer-events-none">
+                <div class="flex-1 border border-[#fcd5ce] rounded-sm shadow-inner bg-gradient-to-br from-white to-transparent opacity-50"></div>
+                <div class="flex-[2] border border-[#fcd5ce] rounded-sm shadow-inner bg-gradient-to-br from-white to-transparent opacity-50"></div>
+                <div class="flex-1 border border-[#fcd5ce] rounded-sm shadow-inner bg-gradient-to-br from-white to-transparent opacity-50"></div>
+            </div>
+            
+            <!-- Metallic Door Handle (Left) -->
+            <div class="w-3 h-20 md:w-4 md:h-24 bg-gradient-to-b from-[#e8e8f2] to-[#b9cec2] rounded-full mr-4 md:mr-8 shadow-md border border-white/50 z-10"></div>
         </div>
 
         <!-- Right Door -->
-        <div id="right-door" class="door w-1/2 h-full bg-gradient-to-l from-[#fdfbfb] to-[#ffe5d9] border-l-2 border-white/50 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] relative flex flex-col items-start justify-center">
-            <!-- Decorative Half-Circle (Right) -->
-            <div class="w-16 h-32 border-4 border-white/70 border-l-0 rounded-r-full -translate-x-[2px]"></div>
+        <div id="right-door" class="door w-1/2 h-full bg-[#fdfbfb] border-l-2 border-[#e8e8f2] shadow-[-15px_0_30px_rgba(0,0,0,0.08)] relative flex items-center justify-start overflow-hidden">
+            <!-- Decorative Door Panels -->
+            <div class="absolute inset-4 md:inset-8 border border-[#d8e2dc] rounded-sm flex flex-col gap-4 p-4 pointer-events-none">
+                <div class="flex-1 border border-[#fcd5ce] rounded-sm shadow-inner bg-gradient-to-bl from-white to-transparent opacity-50"></div>
+                <div class="flex-[2] border border-[#fcd5ce] rounded-sm shadow-inner bg-gradient-to-bl from-white to-transparent opacity-50"></div>
+                <div class="flex-1 border border-[#fcd5ce] rounded-sm shadow-inner bg-gradient-to-bl from-white to-transparent opacity-50"></div>
+            </div>
+            
+            <!-- Metallic Door Handle (Right) -->
+            <div class="w-3 h-20 md:w-4 md:h-24 bg-gradient-to-b from-[#e8e8f2] to-[#b9cec2] rounded-full ml-4 md:ml-8 shadow-md border border-white/50 z-10"></div>
         </div>
 
         <!-- Center Opening Button -->
-        <div id="door-button-container" class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-500">
-            <h1 class="font-script text-5xl md:text-6xl text-[#2d4a3e] mb-8 drop-shadow-md">Kiarra's Baptism</h1>
-            <button onclick="openDoors()" class="pointer-events-auto pastel-glass font-serif italic text-xl px-10 py-4 rounded-full text-[#ff9380] shadow-xl hover:scale-105 hover:bg-white/80 transition-all duration-300 animate-pulse">
+        <div id="door-button-container" class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-700 z-50">
+            <h1 class="font-script text-5xl md:text-6xl text-[#2d4a3e] mb-8 bg-white/70 px-8 py-4 rounded-full backdrop-blur-sm border border-white shadow-xl">Kiarra's Baptism</h1>
+            <button onclick="openDoors()" class="pointer-events-auto pastel-glass font-serif italic text-xl px-12 py-4 rounded-full text-[#ff9380] shadow-[0_10px_40px_rgba(255,147,128,0.3)] hover:scale-105 hover:bg-white transition-all duration-300 animate-pulse border-2 border-white">
                 Tap to Open
             </button>
         </div>
     </div>
     <!-- END FRONT DOOR OVERLAY -->
+
 
     <!-- BIG Floating Pastel Petals -->
     <div class="petal text-pink-300 left-[10%] top-0 w-8 h-8 md:w-10 md:h-10" style="animation-duration: 12s; animation-delay: 0s;">
@@ -313,18 +339,18 @@
     <script>
         // Door Opening Logic
         function openDoors() {
-            // Animate doors sliding away
+            // Animate doors swinging outward in 3D
             document.getElementById('left-door').classList.add('door-open-left');
             document.getElementById('right-door').classList.add('door-open-right');
             
             // Fade out the title and button
             document.getElementById('door-button-container').style.opacity = '0';
 
-            // After animation finishes (1.2 seconds), hide the overlay completely and unlock scrolling
+            // After 3D animation finishes (1.5 seconds), hide the overlay completely and unlock scrolling
             setTimeout(() => {
                 document.getElementById('door-overlay').style.display = 'none';
                 document.body.classList.remove('locked-scroll');
-            }, 1200); 
+            }, 1500); 
         }
 
         // Scroll Animation Logic
