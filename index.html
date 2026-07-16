@@ -24,7 +24,13 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Pastel Floral Corners - made larger with drop shadow */
+        /* Prevent scroll before doors open */
+        .locked-scroll {
+            overflow: hidden !important;
+            height: 100vh;
+        }
+
+        /* Fixed Pastel Floral Corners */
         .floral-corner {
             position: fixed;
             z-index: -1;
@@ -76,9 +82,44 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: 0 8px 32px rgba(252, 213, 206, 0.2);
         }
+
+        /* Door Animation Styles */
+        .door {
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .door-open-left {
+            transform: translateX(-100%);
+        }
+        .door-open-right {
+            transform: translateX(100%);
+        }
     </style>
 </head>
-<body class="font-sans antialiased relative selection:bg-pink-200">
+<body class="font-sans antialiased relative selection:bg-pink-200 locked-scroll">
+
+    <!-- FRONT DOOR OVERLAY -->
+    <div id="door-overlay" class="fixed inset-0 z-[100] flex overflow-hidden bg-[#fdfbfb]">
+        <!-- Left Door -->
+        <div id="left-door" class="door w-1/2 h-full bg-gradient-to-r from-[#fdfbfb] to-[#ffe5d9] border-r-2 border-white/50 shadow-[10px_0_30px_rgba(0,0,0,0.05)] relative flex flex-col items-end justify-center">
+            <!-- Decorative Half-Circle (Left) -->
+            <div class="w-16 h-32 border-4 border-white/70 border-r-0 rounded-l-full translate-x-[2px]"></div>
+        </div>
+
+        <!-- Right Door -->
+        <div id="right-door" class="door w-1/2 h-full bg-gradient-to-l from-[#fdfbfb] to-[#ffe5d9] border-l-2 border-white/50 shadow-[-10px_0_30px_rgba(0,0,0,0.05)] relative flex flex-col items-start justify-center">
+            <!-- Decorative Half-Circle (Right) -->
+            <div class="w-16 h-32 border-4 border-white/70 border-l-0 rounded-r-full -translate-x-[2px]"></div>
+        </div>
+
+        <!-- Center Opening Button -->
+        <div id="door-button-container" class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-500">
+            <h1 class="font-script text-5xl md:text-6xl text-[#2d4a3e] mb-8 drop-shadow-md">Kiarra's Baptism</h1>
+            <button onclick="openDoors()" class="pointer-events-auto pastel-glass font-serif italic text-xl px-10 py-4 rounded-full text-[#ff9380] shadow-xl hover:scale-105 hover:bg-white/80 transition-all duration-300 animate-pulse">
+                Tap to Open
+            </button>
+        </div>
+    </div>
+    <!-- END FRONT DOOR OVERLAY -->
 
     <!-- BIG Floating Pastel Petals -->
     <div class="petal text-pink-300 left-[10%] top-0 w-8 h-8 md:w-10 md:h-10" style="animation-duration: 12s; animation-delay: 0s;">
@@ -268,8 +309,25 @@
 
     </main>
 
-    <!-- Scroll Animation Script -->
+    <!-- Interactive Scripts -->
     <script>
+        // Door Opening Logic
+        function openDoors() {
+            // Animate doors sliding away
+            document.getElementById('left-door').classList.add('door-open-left');
+            document.getElementById('right-door').classList.add('door-open-right');
+            
+            // Fade out the title and button
+            document.getElementById('door-button-container').style.opacity = '0';
+
+            // After animation finishes (1.2 seconds), hide the overlay completely and unlock scrolling
+            setTimeout(() => {
+                document.getElementById('door-overlay').style.display = 'none';
+                document.body.classList.remove('locked-scroll');
+            }, 1200); 
+        }
+
+        // Scroll Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
 
