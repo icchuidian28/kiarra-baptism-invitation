@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -152,6 +152,47 @@
         </div>
     </div>
 
+    <!-- MAIN NAVIGATION BAR -->
+    <!-- Starts hidden (opacity-0, translated up) and animates in when doors open -->
+    <nav id="main-nav" class="fixed top-0 left-0 w-full z-[90] pastel-glass px-6 py-4 transition-all duration-700 opacity-0 -translate-y-full border-b border-white/50 shadow-sm">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <!-- Brand / Logo -->
+            <a href="#" class="font-script text-3xl text-[#ff9380] text-glow drop-shadow-sm hover:scale-105 transition-transform">Kiarra</a>
+            
+            <!-- PC & Tablet Links -->
+            <ul class="hidden md:flex space-x-8 font-sans text-xs tracking-widest uppercase font-semibold text-[#738b81]">
+                <li><a href="#details" class="hover:text-[#ff9380] transition-colors">Details</a></li>
+                <li><a href="#godparents" class="hover:text-[#ff9380] transition-colors">Godparents</a></li>
+                <li><a href="#gallery" class="hover:text-[#ff9380] transition-colors">Gallery</a></li>
+                <li><a href="#info" class="hover:text-[#ff9380] transition-colors">Info</a></li>
+                <li><a href="#rsvp" class="bg-[#ffb5a7] text-white px-4 py-2 rounded-full shadow-sm hover:bg-[#ff9380] transition-colors">RSVP</a></li>
+            </ul>
+
+            <!-- Mobile Hamburger Button -->
+            <button class="md:hidden text-[#738b81] hover:text-[#ff9380] transition-colors focus:outline-none p-2" onclick="toggleMobileMenu()">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[95] flex flex-col items-center justify-center transition-all duration-300 opacity-0 pointer-events-none">
+        <button class="absolute top-6 right-6 text-[#738b81] hover:text-[#ff9380] p-2" onclick="toggleMobileMenu()">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <ul class="flex flex-col space-y-8 font-serif italic text-3xl text-center text-[#2d4a3e]">
+            <li><a href="#details" onclick="toggleMobileMenu()" class="hover:text-[#ff9380] transition-colors block">Details</a></li>
+            <li><a href="#godparents" onclick="toggleMobileMenu()" class="hover:text-[#ff9380] transition-colors block">Godparents</a></li>
+            <li><a href="#gallery" onclick="toggleMobileMenu()" class="hover:text-[#ff9380] transition-colors block">Gallery</a></li>
+            <li><a href="#info" onclick="toggleMobileMenu()" class="hover:text-[#ff9380] transition-colors block">Info & Reminders</a></li>
+            <li><a href="#rsvp" onclick="toggleMobileMenu()" class="text-[#ff9380] block mt-4 font-bold">RSVP</a></li>
+        </ul>
+    </div>
+
     <!-- BIG Floating Pastel Petals -->
     <div class="petal text-pink-300 left-[10%] top-0 w-8 h-8 md:w-10 md:h-10" style="animation-duration: 12s; animation-delay: 0s;">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
@@ -188,7 +229,7 @@
         </svg>
     </div>
 
-    <main class="max-w-md mx-auto relative z-10">
+    <main class="max-w-md mx-auto relative z-10 pt-10">
 
         <!-- SECTION 1: Giant "You are invited" -->
         <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 relative pb-20">
@@ -225,7 +266,7 @@
         </section>
 
         <!-- SECTION 3: Event Details (Grid Layout) -->
-        <section class="min-h-[80vh] flex flex-col justify-center items-center p-6 w-full reveal text-center">
+        <section id="details" class="min-h-[80vh] flex flex-col justify-center items-center p-6 w-full reveal text-center pt-24 scroll-mt-10">
             <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">Mark Your Calendar</p>
             <h2 class="font-serif text-4xl text-[#ff9380] mb-10 text-glow">Important Details</h2>
 
@@ -277,8 +318,8 @@
             </div>
         </section>
 
-        <!-- SECTION 4: Godparents (With Buttons) -->
-        <section class="min-h-[60vh] flex flex-col justify-center items-center p-8 w-full">
+        <!-- SECTION 4: Godparents -->
+        <section id="godparents" class="min-h-[60vh] flex flex-col justify-center items-center p-8 w-full pt-24 scroll-mt-10">
             <h2 class="font-script text-6xl text-[#ff9380] mb-4 text-center reveal text-glow">Godparents</h2>
             <p class="text-center font-sans text-[#738b81] text-sm leading-relaxed mb-12 reveal px-4">
                 The cherished souls who will guide and support her throughout her journey of faith.
@@ -300,7 +341,7 @@
         </section>
 
         <!-- SECTION 5: Photo Gallery -->
-        <section class="min-h-[50vh] flex flex-col justify-center items-center p-8 mt-4 mb-8">
+        <section id="gallery" class="min-h-[50vh] flex flex-col justify-center items-center p-8 mt-4 mb-8 pt-24 scroll-mt-10">
             <h2 class="font-script text-5xl text-[#ff9380] mb-8 text-center reveal text-glow">Sweet Moments</h2>
             
             <div class="grid grid-cols-2 gap-4 w-full">
@@ -319,9 +360,9 @@
         </section>
 
         <!-- SECTION 6: Dress Code, Gifts, Reminders -->
-        <section class="min-h-screen flex flex-col justify-center items-center p-6 space-y-20 w-full">
+        <section id="info" class="min-h-screen flex flex-col justify-center items-center p-6 space-y-20 w-full pt-24 scroll-mt-10">
             
-            <!-- Dress Code (Circle Layout) -->
+            <!-- Dress Code -->
             <div class="reveal w-full text-center">
                 <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">What to wear</p>
                 <h3 class="font-serif text-4xl text-[#ff9380] mb-4 text-glow">Dress Code</h3>
@@ -340,7 +381,7 @@
                 </div>
             </div>
 
-            <!-- Gift Ideas (Stacked Cards Layout) -->
+            <!-- Gift Ideas -->
             <div class="reveal delay-100 w-full text-center">
                 <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">Thoughtful Ideas</p>
                 <h3 class="font-serif text-4xl text-[#ff9380] mb-4 text-glow">Gift Ideas</h3>
@@ -387,7 +428,7 @@
                 </div>
             </div>
 
-            <!-- Reminders (2x2 Grid Layout) -->
+            <!-- Reminders -->
             <div class="reveal delay-200 w-full text-center">
                 <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">For Everyone's Safety</p>
                 <h3 class="font-serif text-4xl text-[#ff9380] mb-6 text-glow">Reminders</h3>
@@ -417,7 +458,7 @@
         </section>
 
         <!-- SECTION 7: RSVP Form -->
-        <section class="min-h-[80vh] flex flex-col justify-center items-center p-6 space-y-8 w-full">
+        <section id="rsvp" class="min-h-[80vh] flex flex-col justify-center items-center p-6 space-y-8 w-full pt-24 scroll-mt-10">
             <div class="reveal w-full text-center">
                 <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">Let us know</p>
                 <h3 class="font-script text-6xl text-[#ff9380] mb-2 text-glow">RSVP</h3>
@@ -506,9 +547,7 @@
 
     <!-- NINONG MODAL -->
     <div id="ninongModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
-        <!-- Backdrop -->
         <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="ninongBackdrop" onclick="closeModal('ninongModal')"></div>
-        <!-- Modal Content -->
         <div class="relative bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninongContent">
             <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninong</h3>
             
@@ -543,9 +582,7 @@
 
     <!-- NINANG MODAL -->
     <div id="ninangModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
-        <!-- Backdrop -->
         <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="ninangBackdrop" onclick="closeModal('ninangModal')"></div>
-        <!-- Modal Content -->
         <div class="relative bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninangContent">
             <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninang</h3>
             
@@ -578,6 +615,20 @@
 
     <!-- Interactive Scripts -->
     <script>
+        // Nav Menu Toggle Function
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('opacity-0');
+            menu.classList.toggle('pointer-events-none');
+            
+            // Toggle body scrolling when menu is open
+            if(menu.classList.contains('opacity-0')) {
+                document.body.style.overflow = '';
+            } else {
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
         // Door Logic
         function openDoors() {
             document.getElementById('left-door').classList.add('door-open-left');
@@ -585,8 +636,16 @@
             document.getElementById('door-button-container').style.opacity = '0';
 
             setTimeout(() => {
+                // Hide doors
                 document.getElementById('door-overlay').style.display = 'none';
                 document.body.classList.remove('locked-scroll');
+                
+                // Animate Navbar down
+                const nav = document.getElementById('main-nav');
+                if(nav) {
+                    nav.classList.remove('opacity-0', '-translate-y-full');
+                    nav.classList.add('opacity-100', 'translate-y-0');
+                }
             }, 1500); 
         }
 
@@ -605,7 +664,6 @@
             
             modal.classList.remove('hidden');
             
-            // Allow display block to render before triggering transitions
             setTimeout(() => {
                 backdrop.classList.remove('opacity-0');
                 backdrop.classList.add('opacity-100');
@@ -614,7 +672,6 @@
                 content.classList.add('scale-100', 'opacity-100');
             }, 10);
             
-            // Prevent background scrolling while modal is open
             document.body.style.overflow = 'hidden';
         }
 
@@ -629,12 +686,10 @@
             content.classList.remove('scale-100', 'opacity-100');
             content.classList.add('scale-95', 'opacity-0');
             
-            // Wait for transition to finish before hiding display
             setTimeout(() => {
                 modal.classList.add('hidden');
-                document.body.style.overflow = ''; // Restore background scrolling
+                document.body.style.overflow = ''; 
                 
-                // Clear map iframe source if it's the map modal to stop unnecessary loading
                 if (modalId === 'mapModal') {
                     document.getElementById('mapIframe').src = '';
                 }
@@ -650,7 +705,6 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                     } else {
-                        // Optional: remove this else block if you want elements to stay revealed once they appear
                         entry.target.classList.remove('active');
                     }
                 });
