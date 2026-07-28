@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -113,26 +113,36 @@
         #right-door { transform-origin: right center; }
         .door-open-left { transform: rotateY(-105deg); }
         .door-open-right { transform: rotateY(105deg); }
+
+        /* Custom Scrollbar for Modals */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 229, 217, 0.3); 
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ffb5a7; 
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body class="font-sans antialiased relative selection:bg-pink-200 locked-scroll">
 
-    <!-- FRONT DOOR OVERLAY USING IMAGE SPLIT IN HALF -->
+    <!-- FRONT DOOR OVERLAY -->
     <div id="door-overlay" class="fixed inset-0 z-[100] flex bg-[#fdfbfb]">
-        
         <!-- Left Door Half -->
         <div id="left-door" class="door w-1/2 h-full overflow-hidden relative shadow-[15px_0_30px_rgba(0,0,0,0.15)] z-20">
-            <!-- Full image wrapper, shifted to perfectly align left -->
             <div class="absolute top-0 left-0 w-[100vw] h-full" style="background-image: url('bg.png'); background-size: cover; background-position: center; border-right: 1px solid rgba(0,0,0,0.1);"></div>
         </div>
 
         <!-- Right Door Half -->
         <div id="right-door" class="door w-1/2 h-full overflow-hidden relative shadow-[-15px_0_30px_rgba(0,0,0,0.15)] z-20">
-            <!-- Full image wrapper, shifted to perfectly align right -->
             <div class="absolute top-0 right-0 w-[100vw] h-full" style="background-image: url('bg.png'); background-size: cover; background-position: center; border-left: 1px solid rgba(255,255,255,0.3);"></div>
         </div>
 
-        <!-- Door Button Container (Removed extra text since image already has text) -->
+        <!-- Door Button Container -->
         <div id="door-button-container" class="absolute inset-0 pointer-events-none transition-opacity duration-700 z-50">
             <div class="absolute bottom-16 md:bottom-24 left-0 right-0 flex items-center justify-center">
                 <button onclick="openDoors()" class="pointer-events-auto pastel-glass font-serif italic text-xl px-12 py-4 rounded-full text-[#ff9380] shadow-[0_10px_40px_rgba(255,147,128,0.5)] hover:scale-105 hover:bg-white transition-all duration-300 animate-pulse border-2 border-white/80">
@@ -141,8 +151,6 @@
             </div>
         </div>
     </div>
-    <!-- END FRONT DOOR OVERLAY -->
-
 
     <!-- BIG Floating Pastel Petals -->
     <div class="petal text-pink-300 left-[10%] top-0 w-8 h-8 md:w-10 md:h-10" style="animation-duration: 12s; animation-delay: 0s;">
@@ -158,7 +166,7 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
     </div>
 
-    <!-- HUGE Top Left Whimsical Floral Cluster -->
+    <!-- Whimsical Floral Clusters -->
     <div class="floral-corner -top-20 -left-20 w-[26rem] h-[26rem] md:w-[32rem] md:h-[32rem] sway-animation origin-top-left">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
             <path d="M20 20 Q 60 10 80 50 Q 30 60 20 20 Z" fill="#d8e2dc" opacity="0.8"/>
@@ -169,8 +177,6 @@
             <circle cx="38" cy="78" r="4" fill="#f8ad9d"/>
         </svg>
     </div>
-
-    <!-- HUGE Bottom Right Whimsical Floral Cluster -->
     <div class="floral-corner -bottom-24 -right-24 w-[30rem] h-[30rem] md:w-[36rem] md:h-[36rem] sway-animation origin-bottom-right" style="animation-delay: -3.5s;">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
             <path d="M180 180 Q 140 190 120 150 Q 170 140 180 180 Z" fill="#d8e2dc" opacity="0.8"/>
@@ -185,12 +191,19 @@
     <main class="max-w-md mx-auto relative z-10">
 
         <!-- SECTION 1: Giant "You are invited" -->
-        <section class="h-screen flex flex-col justify-center items-center text-center p-6 relative">
+        <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 relative pb-20">
             <svg class="w-14 h-14 text-[#ffb5a7] mb-4 reveal drop-shadow-sm text-glow" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
             
-            <h1 class="font-script text-7xl md:text-8xl text-[#2d4a3e] leading-tight reveal text-glow">
+            <h1 class="font-script text-7xl md:text-8xl text-[#2d4a3e] leading-tight reveal text-glow mb-12">
                 You are<br>invited
             </h1>
+
+            <div class="pastel-glass p-8 rounded-3xl reveal delay-100 mt-6 mx-4">
+                <p class="font-sans text-sm md:text-base text-[#2d4a3e] font-medium leading-relaxed">
+                    Join us as we celebrate the Christening of our beloved daughter.<br><br>
+                    With joyful hearts, we invite you to witness the beginning of our baby girl’s journey of faith through the sacrament of Baptism.
+                </p>
+            </div>
             
             <div class="absolute bottom-10 animate-bounce text-[#ffb5a7] reveal delay-400 text-glow">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
@@ -198,7 +211,7 @@
         </section>
 
         <!-- SECTION 2: Name & Occasion -->
-        <section class="min-h-screen flex flex-col justify-center items-center text-center p-8 space-y-4">
+        <section class="min-h-[80vh] flex flex-col justify-center items-center text-center p-8 space-y-4">
             <p class="font-sans text-xs tracking-[0.4em] uppercase text-[#738b81] reveal text-glow font-bold">To the</p>
             <h2 class="font-serif text-5xl italic text-[#ff9380] reveal delay-100 text-glow">Holy Baptism</h2>
             
@@ -208,7 +221,7 @@
                 <div class="h-px w-12 bg-[#2d4a3e]"></div>
             </div>
             
-            <h3 class="font-script text-6xl text-[#2d4a3e] reveal delay-300 leading-[1.2] text-glow">Kiarra Leigh <br> D. Catamio</h3>
+            <h3 class="font-script text-6xl text-[#2d4a3e] reveal delay-300 leading-[1.2] text-glow">Kiarra Leigh</h3>
         </section>
 
         <!-- SECTION 3: Large Details Summary -->
@@ -244,7 +257,7 @@
                 <p class="font-serif text-2xl font-bold text-[#2d4a3e]">9:00 AM</p>
                 <p class="font-sans text-sm tracking-wide text-[#738b81] uppercase font-bold">Holy Family Parish Church</p>
                 <a href="https://www.google.com/maps/place/Holy+Family+Parish+Church+-+Parang,+Marikina+City+(Diocese+of+Antipolo)/@14.6663559,121.0924452,14z/data=!4m6!3m5!1s0x3397b990756372e1:0x1ee8914e244f8696!8m2!3d14.6620329!4d121.1137741!16s%2Fg%2F1wyc1w39!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" class="mt-5 inline-block bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors">
-                    View Map
+                    Tap to View Map
                 </a>
             </div>
 
@@ -253,10 +266,10 @@
                 <div class="w-16 h-16 bg-[#ffe5d9] text-[#e29578] rounded-full flex items-center justify-center mb-3 shadow-inner">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
                 </div>
-                <p class="font-serif text-2xl font-bold text-[#2d4a3e]">10:30 AM</p>
+                <p class="font-serif text-2xl font-bold text-[#2d4a3e]">Reception to follow</p>
                 <p class="font-sans text-sm tracking-wide text-[#738b81] uppercase font-bold">Parang Pavillion</p>
                 <a href="https://www.google.com/maps/place/Parang+Pavillion/@14.6599462,121.1096319,16.25z/data=!4m6!3m5!1s0x3397b990c81775c7:0x48f012cb35e62362!8m2!3d14.6594324!4d121.1119579!16s%2Fg%2F1v44mz0b!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" class="mt-5 inline-block bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors">
-                    View Map
+                    Tap to View Map
                 </a>
             </div>
 
@@ -267,7 +280,29 @@
             </div>
         </section>
 
-        <!-- SECTION 4.5: Photo Gallery (Images 2, 3, 4) -->
+        <!-- SECTION 5: Godparents (With Buttons) -->
+        <section class="min-h-[60vh] flex flex-col justify-center items-center p-8 mt-12 w-full">
+            <h2 class="font-script text-6xl text-[#ff9380] mb-4 text-center reveal text-glow">Godparents</h2>
+            <p class="text-center font-sans text-[#738b81] text-sm leading-relaxed mb-12 reveal px-4">
+                The cherished souls who will guide and support her throughout her journey of faith.
+            </p>
+            
+            <div class="flex flex-col gap-6 w-full max-w-xs">
+                <!-- Ninong Button -->
+                <button onclick="openModal('ninongModal')" class="pastel-glass w-full py-5 rounded-[2rem] flex flex-col items-center justify-center gap-2 hover:scale-105 transition-transform duration-300 shadow-lg group reveal delay-100">
+                    <span class="font-serif text-3xl italic text-[#2d4a3e]">Ninong</span>
+                    <span class="font-sans text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
+                </button>
+
+                <!-- Ninang Button -->
+                <button onclick="openModal('ninangModal')" class="pastel-glass w-full py-5 rounded-[2rem] flex flex-col items-center justify-center gap-2 hover:scale-105 transition-transform duration-300 shadow-lg group reveal delay-200">
+                    <span class="font-serif text-3xl italic text-[#2d4a3e]">Ninang</span>
+                    <span class="font-sans text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Photo Gallery -->
         <section class="min-h-[50vh] flex flex-col justify-center items-center p-8 mt-12 mb-12">
             <h2 class="font-script text-5xl text-[#ff9380] mb-8 text-center reveal text-glow">Sweet Moments</h2>
             
@@ -286,28 +321,73 @@
             </div>
         </section>
 
-        <!-- SECTION 5: Reminders & Dress Code -->
-        <section class="min-h-[70vh] flex flex-col justify-center items-center text-center p-8 space-y-12">
+        <!-- SECTION 7: Dress Code, Gifts, Reminders -->
+        <section class="min-h-screen flex flex-col justify-center items-center text-center p-8 space-y-16">
+            
+            <!-- Dress Code -->
             <div class="reveal w-full">
                 <div class="flex justify-center mb-4"><svg class="w-10 h-10 text-[#ffb5a7] text-glow" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg></div>
                 <h3 class="font-script text-5xl text-[#ff9380] mb-6 text-glow">Dress Code</h3>
-                <p class="font-sans text-[#2d4a3e] leading-relaxed pastel-glass p-8 rounded-3xl font-medium">
-                    Please join us in your best <span class="font-bold text-[#ff9380]">pastel or light-colored</span> attire to match our whimsical theme. 
-                </p>
+                <div class="font-sans text-[#2d4a3e] pastel-glass p-8 rounded-3xl font-medium space-y-2">
+                    <p class="font-bold text-xl uppercase tracking-widest text-[#2d4a3e]">Casual Attire</p>
+                    <p class="text-sm">Celebrate with us in soft shades of <span class="font-bold text-[#ff9380]">pastel pink and white</span>.</p>
+                </div>
             </div>
 
+            <!-- Gift Ideas -->
             <div class="reveal delay-100 w-full">
+                <h3 class="font-script text-5xl text-[#ff9380] mb-6 text-glow">Gift Ideas</h3>
+                <div class="font-sans text-[#2d4a3e] pastel-glass p-8 rounded-3xl font-medium text-left space-y-5">
+                    <p class="text-sm text-center italic text-[#738b81]">
+                        Your prayers and presence are the most precious thing you can give. But if you'd still like to bring something special, here's a little guide to help you out.
+                    </p>
+                    <ul class="space-y-3 text-sm border-t border-[#ffe5d9] pt-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#ff9380] mt-0.5">🎀</span> 
+                            <span>Mustela (Gentle Cleansing Gel, Gentle Shampoo, No Rinse Cleansing Water, Hydra Bebe Face Cream)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#ff9380] mt-0.5">🎀</span> 
+                            <span>Uni-Love Airpro Baby Diaper (Large)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#ff9380] mt-0.5">🎀</span> 
+                            <span>EQ Baby Wipes (Pure Water)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-[#ff9380] mt-0.5">💌</span> 
+                            <span>Monetary Gifts for her future needs</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Reminders -->
+            <div class="reveal delay-200 w-full">
                 <h3 class="font-script text-5xl text-[#ff9380] mb-6 text-glow">Reminders</h3>
-                <div class="font-sans text-[#2d4a3e] space-y-5 pastel-glass p-8 rounded-3xl font-medium">
-                    <p>Your presence is the greatest gift! If you wish to bless Kiarra, monetary gifts are deeply appreciated.</p>
-                    <div class="h-px w-20 mx-auto bg-gradient-to-r from-transparent via-[#ffb5a7] to-transparent"></div>
-                    <p class="font-bold tracking-wide text-sm uppercase">Please RSVP by August 15</p>
-                    <p class="text-[#ff9380] font-bold">[Insert Contact Number]</p>
+                <div class="font-sans text-[#2d4a3e] pastel-glass p-8 rounded-3xl font-medium text-left space-y-5">
+                    <p class="text-sm text-center italic text-[#738b81]">
+                        Your care means so much to us. Kindly follow these reminders to help keep baby Leigh safe and healthy.
+                    </p>
+                    <ul class="space-y-4 text-sm border-t border-[#ffe5d9] pt-4 font-semibold">
+                        <li class="flex items-center gap-3">
+                            <span class="text-xl">🚭</span> No smoking or vaping
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-xl">😷</span> Wear a mask if feeling unwell
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-xl">🤍</span> No kissing baby Leigh
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-xl">🧴</span> Please sanitize your hands
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 6: Final Image 5 & Goodbye -->
+        <!-- SECTION 8: Final Image & Goodbye -->
         <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 pb-24 space-y-12">
             <div class="w-full rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white reveal relative">
                 <img src="kiarra5.jpg" alt="Baby Kiarra" class="w-full h-auto object-cover aspect-[4/5]" onerror="this.outerHTML='<div class=\'w-full aspect-[4/5] bg-white/50 flex items-center justify-center text-[#ff9380] font-sans text-sm\'>kiarra5.jpg here</div>'">
@@ -321,8 +401,81 @@
 
     </main>
 
+    <!-- NINONG MODAL -->
+    <div id="ninongModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="ninongBackdrop" onclick="closeModal('ninongModal')"></div>
+        <!-- Modal Content -->
+        <div class="relative bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninongContent">
+            <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninong</h3>
+            
+            <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
+                <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-medium">
+                    <li>Frank Louie Daya</li>
+                    <li>Harygene Casin</li>
+                    <li>Brandon Dalisay</li>
+                    <li>Ronald Cadawas</li>
+                    <li>Marvin Travecilla</li>
+                    <li>Aljohn Bornilla</li>
+                    <li>Timothy Isaac</li>
+                    <li>Joel Batomalaque</li>
+                    <li>Arvin Rosette</li>
+                    <li>Cj Bacud</li>
+                    <li>Ferdausi Bayao</li>
+                    <li>Ruben Carandang</li>
+                    <li>Ram</li>
+                    <li>Jarrel Vee Peñaranda</li>
+                    <li>Lemuel Macapil</li>
+                    <li>John mich</li>
+                    <li>Darwin Jay Ibañez</li>
+                    <li>Gielito Emperado</li>
+                </ul>
+            </div>
+
+            <button onclick="closeModal('ninongModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- NINANG MODAL -->
+    <div id="ninangModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="ninangBackdrop" onclick="closeModal('ninangModal')"></div>
+        <!-- Modal Content -->
+        <div class="relative bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninangContent">
+            <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninang</h3>
+            
+            <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
+                <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-medium">
+                    <li>Cathyrine Manaog</li>
+                    <li>Jailyn Gaille Emperado</li>
+                    <li>Trisha Mae Emperado</li>
+                    <li>Joyce Ann Balingbing</li>
+                    <li>Jhanmariefer Viesca</li>
+                    <li>Claire Ann Fabian</li>
+                    <li>Mary Joyce Laviña</li>
+                    <li>Mayzel Juliano</li>
+                    <li>Avegail Cipcon</li>
+                    <li>Novijil Ramos</li>
+                    <li>Chaztyn Campanilla</li>
+                    <li>Nathalie Moron</li>
+                    <li>Ira Celiz</li>
+                    <li>Riena Ella Nobleza</li>
+                    <li>Rosey Cruz</li>
+                    <li>Styphanie Nabua</li>
+                </ul>
+            </div>
+
+            <button onclick="closeModal('ninangModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0">
+                Close
+            </button>
+        </div>
+    </div>
+
     <!-- Interactive Scripts -->
     <script>
+        // Door Logic
         function openDoors() {
             document.getElementById('left-door').classList.add('door-open-left');
             document.getElementById('right-door').classList.add('door-open-right');
@@ -334,6 +487,46 @@
             }, 1500); 
         }
 
+        // Modal Logic
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const backdrop = modal.querySelector('div:nth-child(1)');
+            const content = modal.querySelector('div:nth-child(2)');
+            
+            modal.classList.remove('hidden');
+            
+            // Allow display block to render before triggering transitions
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.add('opacity-100');
+                
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            
+            // Prevent background scrolling while modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const backdrop = modal.querySelector('div:nth-child(1)');
+            const content = modal.querySelector('div:nth-child(2)');
+            
+            backdrop.classList.remove('opacity-100');
+            backdrop.classList.add('opacity-0');
+            
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            
+            // Wait for transition to finish before hiding display
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore background scrolling
+            }, 300);
+        }
+
+        // Scroll Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
 
@@ -342,6 +535,7 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                     } else {
+                        // Optional: remove this else block if you want elements to stay revealed once they appear
                         entry.target.classList.remove('active');
                     }
                 });
