@@ -465,12 +465,14 @@
                 <p class="font-sans text-[#2d4a3e] font-medium text-sm mb-1">We'd love to know if you can make it 🤍</p>
                 <p class="font-sans text-[#738b81] text-xs font-semibold mb-8 uppercase tracking-wide">Please RSVP on or before August 23</p>
 
-                <form class="pastel-glass rounded-[2rem] p-6 text-left space-y-6 w-full shadow-lg">
+                <!-- 1. ADDED ACTION AND METHOD HERE -->
+                <form action="https://formspree.io/f/mojgrjpb" method="POST" class="pastel-glass rounded-[2rem] p-6 text-left space-y-6 w-full shadow-lg">
                     
                     <!-- Name Input -->
                     <div>
                         <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2">Your name</label>
-                        <input type="text" placeholder="Enter your name" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all">
+                        <!-- 2. ADDED name="guest_name" AND required -->
+                        <input type="text" name="guest_name" placeholder="Enter your name" required class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all">
                     </div>
 
                     <!-- Attendance Radios -->
@@ -478,7 +480,8 @@
                         <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2">Will you attend?</label>
                         <div class="grid grid-cols-2 gap-3">
                             <label class="cursor-pointer">
-                                <input type="radio" name="attendance" value="yes" class="peer sr-only">
+                                <!-- (Already has name="attendance") added required -->
+                                <input type="radio" name="attendance" value="yes" required class="peer sr-only">
                                 <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#ffb5a7] peer-checked:text-white peer-checked:border-[#ffb5a7] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-medium">
                                     Yes, I'll be there! 🎉
                                 </div>
@@ -502,11 +505,12 @@
                         <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2 flex justify-between">
                             Leave a message <span class="font-normal text-xs opacity-70">(optional)</span>
                         </label>
-                        <textarea rows="3" placeholder="A little note for Kiarra and her parents 🤍" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all resize-none"></textarea>
+                        <!-- 3. ADDED name="message" -->
+                        <textarea name="message" rows="3" placeholder="A little note for Kiarra and her parents 🤍" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all resize-none"></textarea>
                     </div>
 
-                    <!-- Submit Button -->
-                    <button type="button" class="w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-xl shadow-md hover:bg-[#ff9380] hover:shadow-lg transition-all font-semibold mt-2">
+                    <!-- 4. CHANGED FROM type="button" TO type="submit" -->
+                    <button type="submit" class="w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-xl shadow-md hover:bg-[#ff9380] hover:shadow-lg transition-all font-semibold mt-2">
                         Save my spot 🤍
                     </button>
                 </form>
