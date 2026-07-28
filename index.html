@@ -287,13 +287,13 @@
             <div class="flex flex-col gap-6 w-full max-w-xs">
                 <!-- Ninong Button -->
                 <button onclick="openModal('ninongModal')" class="pastel-glass w-full py-5 rounded-[2rem] flex flex-col items-center justify-center gap-2 hover:scale-105 transition-transform duration-300 shadow-lg group reveal delay-100">
-                    <span class="font-serif text-3xl italic text-[#2d4a3e]">Ninong</span>
+                    <span class="font-serif text-3xl italic text-[#2d4a3e]">💪 Ninong</span>
                     <span class="font-sans text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
                 </button>
 
                 <!-- Ninang Button -->
                 <button onclick="openModal('ninangModal')" class="pastel-glass w-full py-5 rounded-[2rem] flex flex-col items-center justify-center gap-2 hover:scale-105 transition-transform duration-300 shadow-lg group reveal delay-200">
-                    <span class="font-serif text-3xl italic text-[#2d4a3e]">Ninang</span>
+                    <span class="font-serif text-3xl italic text-[#2d4a3e]">💅 Ninang</span>
                     <span class="font-sans text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
                 </button>
             </div>
@@ -416,7 +416,63 @@
             </div>
         </section>
 
-        <!-- SECTION 7: Final Image & Goodbye -->
+        <!-- SECTION 7: RSVP Form -->
+        <section class="min-h-[80vh] flex flex-col justify-center items-center p-6 space-y-8 w-full">
+            <div class="reveal w-full text-center">
+                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">Let us know</p>
+                <h3 class="font-script text-6xl text-[#ff9380] mb-2 text-glow">RSVP</h3>
+                <p class="font-sans text-[#2d4a3e] font-medium text-sm mb-1">We'd love to know if you can make it 🤍</p>
+                <p class="font-sans text-[#738b81] text-xs font-semibold mb-8 uppercase tracking-wide">Please RSVP on or before August 23</p>
+
+                <form class="pastel-glass rounded-[2rem] p-6 text-left space-y-6 w-full shadow-lg">
+                    
+                    <!-- Name Input -->
+                    <div>
+                        <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2">Your name</label>
+                        <input type="text" placeholder="Enter your name" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all">
+                    </div>
+
+                    <!-- Attendance Radios -->
+                    <div>
+                        <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2">Will you attend?</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="attendance" value="yes" class="peer sr-only">
+                                <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#ffb5a7] peer-checked:text-white peer-checked:border-[#ffb5a7] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-medium">
+                                    Yes, I'll be there! 🎉
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="attendance" value="no" class="peer sr-only">
+                                <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#e8e8f2] peer-checked:text-[#8e8eba] peer-checked:border-[#d0d0e1] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-medium">
+                                    Sorry, I can't 😢
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Notice Alert -->
+                    <div class="bg-[#fff9e6] border border-[#ffe082] rounded-xl p-4 text-xs font-sans text-[#8a6d3b] leading-relaxed shadow-sm">
+                        <strong class="font-bold">Bringing a companion?</strong> Please let us know in the message below — seats are limited and we want to make sure we have enough room for everyone.
+                    </div>
+
+                    <!-- Message Textarea -->
+                    <div>
+                        <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2 flex justify-between">
+                            Leave a message <span class="font-normal text-xs opacity-70">(optional)</span>
+                        </label>
+                        <textarea rows="3" placeholder="A little note for Kiarra and her parents 🤍" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all resize-none"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="button" class="w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-xl shadow-md hover:bg-[#ff9380] hover:shadow-lg transition-all font-semibold mt-2">
+                        Save my spot 🤍
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 8: Final Image & Goodbye -->
         <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 pb-24 space-y-12">
             <div class="w-full rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white reveal relative">
                 <img src="kiarra5.jpg" alt="Baby Kiarra" class="w-full h-auto object-cover aspect-[4/5]" onerror="this.outerHTML='<div class=\'w-full aspect-[4/5] bg-white/50 flex items-center justify-center text-[#ff9380] font-sans text-sm\'>kiarra5.jpg here</div>'">
@@ -454,7 +510,7 @@
         <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="ninongBackdrop" onclick="closeModal('ninongModal')"></div>
         <!-- Modal Content -->
         <div class="relative bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninongContent">
-            <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">💪 Ninong</h3>
+            <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninong</h3>
             
             <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
                 <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-medium">
@@ -491,7 +547,7 @@
         <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="ninangBackdrop" onclick="closeModal('ninangModal')"></div>
         <!-- Modal Content -->
         <div class="relative bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninangContent">
-            <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">💅 Ninang</h3>
+            <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninang</h3>
             
             <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
                 <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-medium">
