@@ -6,9 +6,26 @@
     <title>Kiarra's Baptism</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Added Tailwind Config to properly map the fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Changed Poppins to Nunito to match the rounded "Mustela" aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
         body {
@@ -160,7 +177,7 @@
             <a href="#" class="font-script text-3xl text-[#ff9380] text-glow drop-shadow-sm hover:scale-105 transition-transform">Kiarra</a>
             
             <!-- PC & Tablet Links -->
-            <ul class="hidden md:flex space-x-8 font-sans text-xs tracking-widest uppercase font-semibold text-[#738b81]">
+            <ul class="hidden md:flex space-x-8 font-sans text-xs tracking-widest uppercase font-bold text-[#738b81]">
                 <li><a href="#details" class="hover:text-[#ff9380] transition-colors">Details</a></li>
                 <li><a href="#godparents" class="hover:text-[#ff9380] transition-colors">Godparents</a></li>
                 <li><a href="#gallery" class="hover:text-[#ff9380] transition-colors">Gallery</a></li>
@@ -240,7 +257,7 @@
             </h1>
 
             <div class="pastel-glass p-8 rounded-3xl reveal delay-100 mt-6 mx-4">
-                <p class="font-sans text-sm md:text-base text-[#2d4a3e] font-medium leading-relaxed">
+                <p class="font-sans text-sm md:text-base text-[#2d4a3e] font-semibold leading-relaxed">
                     Join us as we celebrate the Christening of our beloved daughter.<br><br>
                     With joyful hearts, we invite you to witness the beginning of our baby girl’s journey of faith through the sacrament of Baptism.
                 </p>
@@ -267,7 +284,7 @@
 
         <!-- SECTION 3: Event Details (Grid Layout) -->
         <section id="details" class="min-h-[80vh] flex flex-col justify-center items-center p-6 w-full reveal text-center pt-24 scroll-mt-10">
-            <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">Mark Your Calendar</p>
+            <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-bold">Mark Your Calendar</p>
             <h2 class="font-serif text-4xl text-[#ff9380] mb-10 text-glow">Important Details</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
@@ -275,7 +292,7 @@
                 <div class="pastel-glass p-5 rounded-2xl flex gap-4 items-center text-left hover:scale-[1.02] transition-transform">
                     <div class="text-3xl bg-white/50 p-2 rounded-xl shadow-sm">📅</div>
                     <div>
-                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-semibold">Date</p>
+                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-bold">Date</p>
                         <p class="font-serif text-[1.1rem] text-[#2d4a3e] font-semibold leading-tight">Saturday, August 29, 2026</p>
                     </div>
                 </div>
@@ -283,7 +300,7 @@
                 <div class="pastel-glass p-5 rounded-2xl flex gap-4 items-center text-left hover:scale-[1.02] transition-transform delay-100">
                     <div class="text-3xl bg-white/50 p-2 rounded-xl shadow-sm">⏰</div>
                     <div>
-                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-semibold">Time</p>
+                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-bold">Time</p>
                         <p class="font-serif text-[1.1rem] text-[#2d4a3e] font-semibold leading-tight">9:00 AM</p>
                     </div>
                 </div>
@@ -291,9 +308,9 @@
                 <div class="pastel-glass p-5 rounded-2xl flex gap-4 items-center text-left hover:scale-[1.02] transition-transform delay-200">
                     <div class="text-3xl bg-white/50 p-2 rounded-xl shadow-sm">⛪</div>
                     <div class="flex flex-col">
-                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-semibold">Church</p>
+                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-bold">Church</p>
                         <p class="font-serif text-[1.1rem] text-[#2d4a3e] font-semibold leading-tight mb-2">Holy Family Parish Church</p>
-                        <button onclick="openMapModal('Holy Family Parish Church', 'https://maps.google.com/maps?q=Holy+Family+Parish+Church+Parang+Marikina&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="text-[#ff9380] text-sm font-semibold flex items-center gap-1 hover:underline cursor-pointer text-left">
+                        <button onclick="openMapModal('Holy Family Parish Church', 'https://maps.google.com/maps?q=Holy+Family+Parish+Church+Parang+Marikina&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="text-[#ff9380] text-sm font-bold flex items-center gap-1 hover:underline cursor-pointer text-left">
                             📍 Tap to view map
                         </button>
                     </div>
@@ -302,9 +319,9 @@
                 <div class="pastel-glass p-5 rounded-2xl flex gap-4 items-center text-left hover:scale-[1.02] transition-transform delay-300">
                     <div class="text-3xl bg-white/50 p-2 rounded-xl shadow-sm">🍽️</div>
                     <div class="flex flex-col">
-                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-semibold">Reception</p>
+                        <p class="font-sans text-xs tracking-wider text-[#738b81] uppercase mb-1 font-bold">Reception</p>
                         <p class="font-serif text-[1.1rem] text-[#2d4a3e] font-semibold leading-tight mb-2">Parang Pavillion</p>
-                        <button onclick="openMapModal('Parang Pavillion', 'https://maps.google.com/maps?q=Parang+Pavillion+Marikina&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="text-[#ff9380] text-sm font-semibold flex items-center gap-1 hover:underline cursor-pointer text-left">
+                        <button onclick="openMapModal('Parang Pavillion', 'https://maps.google.com/maps?q=Parang+Pavillion+Marikina&t=&z=15&ie=UTF8&iwloc=&output=embed')" class="text-[#ff9380] text-sm font-bold flex items-center gap-1 hover:underline cursor-pointer text-left">
                             📍 Tap to view map
                         </button>
                     </div>
@@ -321,7 +338,7 @@
         <!-- SECTION 4: Godparents -->
         <section id="godparents" class="min-h-[60vh] flex flex-col justify-center items-center p-8 w-full pt-24 scroll-mt-10">
             <h2 class="font-script text-6xl text-[#ff9380] mb-4 text-center reveal text-glow">Godparents</h2>
-            <p class="text-center font-sans text-[#738b81] text-sm leading-relaxed mb-12 reveal px-4">
+            <p class="text-center font-sans font-semibold text-[#738b81] text-sm leading-relaxed mb-12 reveal px-4">
                 The cherished souls who will guide and support her throughout her journey of faith.
             </p>
             
@@ -329,13 +346,13 @@
                 <!-- Ninong Button -->
                 <button onclick="openModal('ninongModal')" class="pastel-glass w-full py-5 rounded-[2rem] flex flex-col items-center justify-center gap-2 hover:scale-105 transition-transform duration-300 shadow-lg group reveal delay-100">
                     <span class="font-serif text-3xl italic text-[#2d4a3e]">💪 Ninong</span>
-                    <span class="font-sans text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
+                    <span class="font-sans font-bold text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
                 </button>
 
                 <!-- Ninang Button -->
                 <button onclick="openModal('ninangModal')" class="pastel-glass w-full py-5 rounded-[2rem] flex flex-col items-center justify-center gap-2 hover:scale-105 transition-transform duration-300 shadow-lg group reveal delay-200">
                     <span class="font-serif text-3xl italic text-[#2d4a3e]">💅 Ninang</span>
-                    <span class="font-sans text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
+                    <span class="font-sans font-bold text-xs tracking-widest uppercase text-[#ff9380] group-hover:text-[#ffb5a7] transition-colors">Tap to view</span>
                 </button>
             </div>
         </section>
@@ -364,28 +381,28 @@
             
             <!-- Dress Code -->
             <div class="reveal w-full text-center">
-                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">What to wear</p>
+                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-bold">What to wear</p>
                 <h3 class="font-serif text-4xl text-[#ff9380] mb-4 text-glow">Dress Code</h3>
                 <p class="font-serif text-2xl text-[#2d4a3e] mb-2">Casual Attire</p>
-                <p class="font-sans text-[#738b81] text-sm mb-8">Celebrate with us in soft shades of pastel pink and white 🤍</p>
+                <p class="font-sans font-semibold text-[#738b81] text-sm mb-8">Celebrate with us in soft shades of pastel pink and white 🤍</p>
                 
                 <div class="flex justify-center gap-10">
                     <div class="flex flex-col items-center gap-3">
                         <div class="w-16 h-16 rounded-full bg-[#fcd5ce] shadow-md border-2 border-white transform hover:scale-110 transition-transform"></div>
-                        <span class="font-sans text-xs text-[#738b81] font-semibold">Pastel Pink</span>
+                        <span class="font-sans text-xs text-[#738b81] font-bold">Pastel Pink</span>
                     </div>
                     <div class="flex flex-col items-center gap-3">
                         <div class="w-16 h-16 rounded-full bg-white shadow-md border-2 border-gray-100 transform hover:scale-110 transition-transform"></div>
-                        <span class="font-sans text-xs text-[#738b81] font-semibold">White</span>
+                        <span class="font-sans text-xs text-[#738b81] font-bold">White</span>
                     </div>
                 </div>
             </div>
 
             <!-- Gift Ideas -->
             <div class="reveal delay-100 w-full text-center">
-                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">Thoughtful Ideas</p>
+                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-bold">Thoughtful Ideas</p>
                 <h3 class="font-serif text-4xl text-[#ff9380] mb-4 text-glow">Gift Ideas</h3>
-                <p class="font-sans text-[#738b81] text-sm mb-8 px-2 leading-relaxed">
+                <p class="font-sans font-semibold text-[#738b81] text-sm mb-8 px-2 leading-relaxed">
                     Your prayers and presence are the most precious thing you can give. But if you'd still like to bring something special, here's a little guide to help you out.
                 </p>
                 
@@ -394,7 +411,7 @@
                         <div class="text-3xl bg-white/50 w-12 h-12 flex items-center justify-center rounded-full shadow-sm flex-shrink-0">🧴</div>
                         <div class="flex-grow text-left">
                             <p class="font-serif text-[#2d4a3e] font-semibold text-[1.05rem]">Mustela</p>
-                            <p class="font-sans text-xs text-[#738b81] leading-snug mt-0.5">Gentle Cleansing Gel, Shampoo, No Rinse, Hydra Bebe</p>
+                            <p class="font-sans font-semibold text-xs text-[#738b81] leading-snug mt-0.5">Gentle Cleansing Gel, Shampoo, No Rinse, Hydra Bebe</p>
                         </div>
                         <div class="text-[#ffb5a7] font-bold text-xl px-2">›</div>
                     </div>
@@ -403,7 +420,7 @@
                         <div class="text-3xl bg-white/50 w-12 h-12 flex items-center justify-center rounded-full shadow-sm flex-shrink-0">👶</div>
                         <div class="flex-grow text-left">
                             <p class="font-serif text-[#2d4a3e] font-semibold text-[1.05rem]">Uni-Love Airpro Baby Diaper</p>
-                            <p class="font-sans text-xs text-[#738b81] mt-0.5">Large size</p>
+                            <p class="font-sans font-semibold text-xs text-[#738b81] mt-0.5">Large size</p>
                         </div>
                         <div class="text-[#ffb5a7] font-bold text-xl px-2">›</div>
                     </div>
@@ -412,7 +429,7 @@
                         <div class="text-3xl bg-white/50 w-12 h-12 flex items-center justify-center rounded-full shadow-sm flex-shrink-0">💧</div>
                         <div class="flex-grow text-left">
                             <p class="font-serif text-[#2d4a3e] font-semibold text-[1.05rem]">EQ Baby Wipes</p>
-                            <p class="font-sans text-xs text-[#738b81] mt-0.5">Pure Water</p>
+                            <p class="font-sans font-semibold text-xs text-[#738b81] mt-0.5">Pure Water</p>
                         </div>
                         <div class="text-[#ffb5a7] font-bold text-xl px-2">›</div>
                     </div>
@@ -421,7 +438,7 @@
                         <div class="text-3xl bg-white/50 w-12 h-12 flex items-center justify-center rounded-full shadow-sm flex-shrink-0">💛</div>
                         <div class="flex-grow text-left">
                             <p class="font-serif text-[#2d4a3e] font-semibold text-[1.05rem]">Monetary Gifts</p>
-                            <p class="font-sans text-xs text-[#738b81] mt-0.5">For her future needs</p>
+                            <p class="font-sans font-semibold text-xs text-[#738b81] mt-0.5">For her future needs</p>
                         </div>
                         <div class="text-[#ffb5a7] font-bold text-xl px-2">›</div>
                     </div>
@@ -430,28 +447,28 @@
 
             <!-- Reminders -->
             <div class="reveal delay-200 w-full text-center">
-                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">For Everyone's Safety</p>
+                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-bold">For Everyone's Safety</p>
                 <h3 class="font-serif text-4xl text-[#ff9380] mb-6 text-glow">Reminders</h3>
-                <p class="font-sans text-[#738b81] text-sm mb-8 px-2 leading-relaxed">
+                <p class="font-sans font-semibold text-[#738b81] text-sm mb-8 px-2 leading-relaxed">
                     Your care means so much to us. Kindly follow these reminders to help keep baby Leigh safe and healthy.
                 </p>
                 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="pastel-glass rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-3 hover:scale-[1.02] transition-transform">
                         <div class="text-4xl">😘🚫</div>
-                        <p class="font-sans text-sm text-[#2d4a3e] font-medium leading-snug">No kissing to baby Leigh</p>
+                        <p class="font-sans text-sm text-[#2d4a3e] font-bold leading-snug">No kissing to baby Leigh</p>
                     </div>
                     <div class="pastel-glass rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-3 hover:scale-[1.02] transition-transform">
                         <div class="text-4xl">🚬🚫</div>
-                        <p class="font-sans text-sm text-[#2d4a3e] font-medium leading-snug">No smoking or vaping</p>
+                        <p class="font-sans text-sm text-[#2d4a3e] font-bold leading-snug">No smoking or vaping</p>
                     </div>
                     <div class="pastel-glass rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-3 hover:scale-[1.02] transition-transform">
                         <div class="text-4xl">🧴</div>
-                        <p class="font-sans text-sm text-[#2d4a3e] font-medium leading-snug">Please sanitize your hands</p>
+                        <p class="font-sans text-sm text-[#2d4a3e] font-bold leading-snug">Please sanitize your hands</p>
                     </div>
                     <div class="pastel-glass rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-3 hover:scale-[1.02] transition-transform">
                         <div class="text-4xl">😷</div>
-                        <p class="font-sans text-sm text-[#2d4a3e] font-medium leading-snug">Wear a mask if feeling unwell</p>
+                        <p class="font-sans text-sm text-[#2d4a3e] font-bold leading-snug">Wear a mask if feeling unwell</p>
                     </div>
                 </div>
             </div>
@@ -460,35 +477,35 @@
         <!-- SECTION 7: RSVP Form -->
         <section id="rsvp" class="min-h-[80vh] flex flex-col justify-center items-center p-6 space-y-8 w-full pt-24 scroll-mt-10">
             <div class="reveal w-full text-center">
-                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-semibold">Let us know</p>
+                <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-bold">Let us know</p>
                 <h3 class="font-script text-6xl text-[#ff9380] mb-2 text-glow">RSVP</h3>
-                <p class="font-sans text-[#2d4a3e] font-medium text-sm mb-1">We'd love to know if you can make it 🤍</p>
-                <p class="font-sans text-[#738b81] text-xs font-semibold mb-8 uppercase tracking-wide">Please RSVP on or before August 23</p>
+                <p class="font-sans text-[#2d4a3e] font-bold text-sm mb-1">We'd love to know if you can make it 🤍</p>
+                <p class="font-sans text-[#738b81] text-xs font-bold mb-8 uppercase tracking-wide">Please RSVP on or before August 23</p>
 
                 <!-- 1. ADDED ACTION AND METHOD HERE -->
                 <form action="https://formspree.io/f/xeeynenn" method="POST" class="pastel-glass rounded-[2rem] p-6 text-left space-y-6 w-full shadow-lg">
                     
                     <!-- Name Input -->
                     <div>
-                        <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2">Your name</label>
+                        <label class="block font-sans text-[#738b81] text-sm font-bold mb-2">Your name</label>
                         <!-- 2. ADDED name="guest_name" AND required -->
-                        <input type="text" name="guest_name" placeholder="Enter your name" required class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all">
+                        <input type="text" name="guest_name" placeholder="Enter your name" required class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans font-semibold text-sm text-[#2d4a3e] shadow-sm transition-all">
                     </div>
 
                     <!-- Attendance Radios -->
                     <div>
-                        <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2">Will you attend?</label>
+                        <label class="block font-sans text-[#738b81] text-sm font-bold mb-2">Will you attend?</label>
                         <div class="grid grid-cols-2 gap-3">
                             <label class="cursor-pointer">
                                 <!-- (Already has name="attendance") added required -->
                                 <input type="radio" name="attendance" value="yes" required class="peer sr-only">
-                                <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#ffb5a7] peer-checked:text-white peer-checked:border-[#ffb5a7] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-medium">
+                                <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#ffb5a7] peer-checked:text-white peer-checked:border-[#ffb5a7] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-bold">
                                     Yes, I'll be there! 🎉
                                 </div>
                             </label>
                             <label class="cursor-pointer">
                                 <input type="radio" name="attendance" value="no" class="peer sr-only">
-                                <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#e8e8f2] peer-checked:text-[#8e8eba] peer-checked:border-[#d0d0e1] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-medium">
+                                <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#e8e8f2] peer-checked:text-[#8e8eba] peer-checked:border-[#d0d0e1] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-bold">
                                     Sorry, I can't 😢
                                 </div>
                             </label>
@@ -496,21 +513,21 @@
                     </div>
 
                     <!-- Notice Alert -->
-                    <div class="bg-[#fff9e6] border border-[#ffe082] rounded-xl p-4 text-xs font-sans text-[#8a6d3b] leading-relaxed shadow-sm">
+                    <div class="bg-[#fff9e6] border border-[#ffe082] rounded-xl p-4 text-xs font-sans font-semibold text-[#8a6d3b] leading-relaxed shadow-sm">
                         <strong class="font-bold">Bringing a companion?</strong> Please let us know in the message below — seats are limited and we want to make sure we have enough room for everyone.
                     </div>
 
                     <!-- Message Textarea -->
                     <div>
-                        <label class="block font-sans text-[#738b81] text-sm font-semibold mb-2 flex justify-between">
-                            Leave a message <span class="font-normal text-xs opacity-70">(optional)</span>
+                        <label class="block font-sans text-[#738b81] text-sm font-bold mb-2 flex justify-between">
+                            Leave a message <span class="font-semibold text-xs opacity-70">(optional)</span>
                         </label>
                         <!-- 3. ADDED name="message" -->
-                        <textarea name="message" rows="3" placeholder="A little note for Kiarra and her parents 🤍" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans text-sm text-[#2d4a3e] shadow-sm transition-all resize-none"></textarea>
+                        <textarea name="message" rows="3" placeholder="A little note for Kiarra and her parents 🤍" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans font-semibold text-sm text-[#2d4a3e] shadow-sm transition-all resize-none"></textarea>
                     </div>
 
                     <!-- 4. CHANGED FROM type="button" TO type="submit" -->
-                    <button type="submit" class="w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-xl shadow-md hover:bg-[#ff9380] hover:shadow-lg transition-all font-semibold mt-2">
+                    <button type="submit" class="w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-xl shadow-md hover:bg-[#ff9380] hover:shadow-lg transition-all font-bold mt-2">
                         Save my spot 🤍
                     </button>
                 </form>
@@ -543,7 +560,7 @@
                 <iframe id="mapIframe" src="" width="100%" height="100%" style="border:0; min-height: 250px;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <button onclick="closeModal('mapModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0">
+            <button onclick="closeModal('mapModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0 font-bold">
                 Close
             </button>
         </div>
@@ -556,7 +573,7 @@
             <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninong</h3>
             
             <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
-                <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-medium">
+                <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-bold">
                     <li>Frank Louie Daya</li>
                     <li>Harygene Casin</li>
                     <li>Brandon Dalisay</li>
@@ -577,7 +594,7 @@
                 </ul>
             </div>
 
-            <button onclick="closeModal('ninongModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0">
+            <button onclick="closeModal('ninongModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0 font-bold">
                 Close
             </button>
         </div>
@@ -590,7 +607,7 @@
             <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninang</h3>
             
             <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
-                <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-medium">
+                <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-bold">
                     <li>Cathyrine Manaog</li>
                     <li>Jailyn Gaille Emperado</li>
                     <li>Joyce Ann Balingbing</li>
@@ -609,7 +626,7 @@
                 </ul>
             </div>
 
-            <button onclick="closeModal('ninangModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0">
+            <button onclick="closeModal('ninangModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0 font-bold">
                 Close
             </button>
         </div>
