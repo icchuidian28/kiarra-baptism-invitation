@@ -7,7 +7,6 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Added Tailwind Config to properly map the fonts -->
     <script>
         tailwind.config = {
             theme: {
@@ -24,26 +23,24 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Changed Poppins to Nunito to match the rounded "Mustela" aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Pastel Pink Envelope Palette */
-            --env-back: #d993a4;       /* Darker dusty pink for the inside back */
-            --env-bottom: #f2a6b7;     /* Main pastel pink for front bottom */
-            --env-sides: #f5b6c5;      /* Slightly lighter pink for front sides */
-            --env-flap: #f9c7d4;       /* Lightest pastel pink for the top flap */
+            /* Updated Pastel Pink Envelope Palette to match the reference */
+            --env-back: #eb9cb0;       /* Darker dusty pink for the inside back */
+            --env-bottom: #f8a8b8;     /* Main pastel pink for front bottom */
+            --env-sides: #f4a2b2;      /* Slightly darker pink for front sides */
+            --env-flap: #fab0c0;       /* Lightest pastel pink for the top flap */
             --card-text: #2d4a3e;      /* Deep green to match the rest of the site */
         }
 
         body {
-            background-color: #fdfbfb;
+            background-color: #fcf9f9;
             color: #2d4a3e;
             overflow-x: hidden;
         }
 
-        /* Mobile-safe fixed background using a pseudo-element */
         body::before {
             content: "";
             position: fixed;
@@ -51,77 +48,18 @@
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: -5; /* Keeps it behind everything else */
+            z-index: -5; 
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), 
+                linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
                 url('background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        /* Prevent scroll before doors open */
         .locked-scroll {
             overflow: hidden !important;
             height: 100vh;
-        }
-
-        /* Fixed Pastel Floral Corners */
-        .floral-corner {
-            position: fixed;
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.85;
-            filter: drop-shadow(0 15px 25px rgba(252, 213, 206, 0.4));
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: rotate(-3deg) scale(1); }
-            50% { transform: rotate(3deg) scale(1.02); }
-        }
-        .sway-animation { animation: sway 7s ease-in-out infinite; }
-
-        /* Floating Petals Animation */
-        @keyframes drift {
-            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(105vh) rotate(360deg) translateX(40px); opacity: 0; }
-        }
-        .petal {
-            position: fixed;
-            z-index: 0;
-            pointer-events: none;
-            animation: drift linear infinite;
-        }
-
-        /* Scroll Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-
-        /* Soft Glassmorphism */
-        .pastel-glass {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 32px rgba(252, 213, 206, 0.3);
-        }
-
-        /* Glowing text to stand out against busy backgrounds */
-        .text-glow {
-            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8), 2px 2px 5px rgba(255, 255, 255, 0.9);
         }
 
         /* ----------------------------------
@@ -129,7 +67,7 @@
            ---------------------------------- */
         #envelope-overlay {
             transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
-            background: linear-gradient(135deg, #fdf5f7 0%, #fdfbfb 100%);
+            background: radial-gradient(circle at center, #ffffff 0%, #fff0f3 100%);
         }
 
         input#flap {
@@ -138,12 +76,11 @@
 
         .envelope-container {
             position: relative;
-            filter: drop-shadow(0 15px 30px rgba(200, 140, 155, 0.25));
-            transform: scale(1.1); /* Slightly larger for emphasis */
+            filter: drop-shadow(0 20px 40px rgba(235, 156, 176, 0.15));
+            transform: scale(1.1);
             transition: transform 0.3s ease;
         }
         
-        /* Gentle bounce animation for the closed envelope */
         @keyframes envelope-hover {
             0%, 100% { transform: translateY(0) scale(1.1); }
             50% { transform: translateY(-8px) scale(1.1); }
@@ -244,18 +181,87 @@
             transition-delay: 0.2s; 
         }
 
-        /* Custom Scrollbar for Modals */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+        /* ----------------------------------
+           WHIMSICAL ENVELOPE ADDITIONS 
+           ---------------------------------- */
+        .wax-seal {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 229, 217, 0.3); 
-            border-radius: 10px;
+
+        #flap:checked ~ .wax-seal {
+            opacity: 0;
+            transform: scale(1.4) translateY(15px);
+            pointer-events: none;
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #ffb5a7; 
-            border-radius: 10px;
+        
+        .whimsical-sparkle {
+            animation: envelope-sparkle 2.5s ease-in-out infinite alternate;
         }
+        
+        @keyframes envelope-sparkle {
+            0% { transform: scale(0.7); opacity: 0.6; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* ----------------------------------
+           REST OF SITE CSS 
+           ---------------------------------- */
+        .floral-corner {
+            position: fixed;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.85;
+            filter: drop-shadow(0 15px 25px rgba(252, 213, 206, 0.4));
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg) scale(1); }
+            50% { transform: rotate(3deg) scale(1.02); }
+        }
+        .sway-animation { animation: sway 7s ease-in-out infinite; }
+
+        @keyframes drift {
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(105vh) rotate(360deg) translateX(40px); opacity: 0; }
+        }
+        .petal {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            animation: drift linear infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        .pastel-glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px rgba(252, 213, 206, 0.3);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8), 2px 2px 5px rgba(255, 255, 255, 0.9);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 229, 217, 0.3); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ffb5a7; border-radius: 10px; }
     </style>
 </head>
 <body class="font-sans antialiased relative selection:bg-pink-200 locked-scroll">
@@ -264,54 +270,84 @@
     <div id="envelope-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center pointer-events-auto">
         <div id="envelope-wrapper" class="envelope-container envelope-hover-anim relative">
             <input id="flap" type="checkbox" onchange="handleEnvelopeOpen()"/>
-            
-            <label class="flap" for="flap">
-                <!-- Flap Wax Seal Flower -->
-                <div class="absolute flex items-center justify-center drop-shadow-md transition-transform duration-300 hover:scale-[1.2]" style="top: 95px; left: 160px; transform: translate(-50%, -50%);">
-                    <svg viewBox="0 0 100 100" width="60" height="60">
-                        <path d="M50 50 Q 20 30 15 55 Q 35 70 50 50 Z" fill="#b9cec2" />
-                        <path d="M50 50 Q 80 30 85 55 Q 65 70 50 50 Z" fill="#b9cec2" />
-                        <circle cx="50" cy="35" r="14" fill="#fcd5ce" />
-                        <circle cx="36" cy="48" r="14" fill="#fcd5ce" />
-                        <circle cx="64" cy="48" r="14" fill="#fcd5ce" />
-                        <circle cx="42" cy="62" r="14" fill="#fcd5ce" />
-                        <circle cx="58" cy="62" r="14" fill="#fcd5ce" />
-                        <circle cx="50" cy="51" r="8" fill="#ffe5d9" />
-                        <circle cx="50" cy="51" r="3" fill="#ffb5a7" />
-                    </svg>
-                </div>
-            </label>
-            
+            <label class="flap" for="flap"></label>
             <div class="envelope-back"></div>
             
             <!-- Sliding Card Content -->
             <div class="card p-6 flex flex-col justify-center items-center">
-                <p class="font-script text-4xl text-[#ff9380] mb-2 leading-none">Kiarra Leigh</p>
+                <p class="font-script text-4xl text-[#f6b8a7] mb-2 leading-none">Kiarra Leigh</p>
                 <div class="h-px w-16 bg-[#ffb5a7] mb-2 opacity-50"></div>
                 <p class="font-sans text-[0.65rem] tracking-[0.2em] font-bold uppercase text-[#738b81]">Baptism Invitation</p>
             </div>
             
             <div class="card-front"></div>
 
-            <!-- Envelope Body Flowers (Bottom Left) -->
-            <div class="absolute bottom-[-15px] left-[-20px] pointer-events-none z-[8] drop-shadow-lg">
-                <svg viewBox="0 0 100 100" width="90" height="90">
-                    <path d="M10 90 Q 30 40 70 70 Q 30 100 10 90 Z" fill="#d8e2dc"/>
-                    <path d="M20 70 Q 40 20 80 50 Q 40 80 20 70 Z" fill="#b9cec2"/>
-                    <circle cx="45" cy="65" r="16" fill="#fcd5ce"/>
-                    <circle cx="70" cy="75" r="12" fill="#ffe5d9"/>
-                    <circle cx="30" cy="85" r="10" fill="#ffb5a7"/>
-                    <circle cx="45" cy="65" r="5" fill="#ffe5d9"/>
-                </svg>
-            </div>
+            <!-- Custom Floral Wax Seal -->
+            <label for="flap" class="wax-seal absolute top-[85px] left-[135px] w-[50px] h-[50px] bg-gradient-to-br from-[#ffbfae] to-[#ffa391] rounded-full z-[8] cursor-pointer flex items-center justify-center shadow-[0_4px_10px_rgba(255,163,145,0.4),inset_0_2px_4px_rgba(255,255,255,0.4)] border-2 border-white/80">
+                <span class="font-script text-white text-2xl drop-shadow-sm leading-none pt-1">K</span>
+            </label>
 
-            <!-- Envelope Body Flowers (Bottom Right) -->
-            <div class="absolute bottom-[-10px] right-[-15px] pointer-events-none z-[8] drop-shadow-lg transform scale-x-[-1]">
-                <svg viewBox="0 0 100 100" width="70" height="70">
-                    <path d="M10 90 Q 30 40 70 70 Q 30 100 10 90 Z" fill="#d8e2dc"/>
-                    <circle cx="45" cy="65" r="14" fill="#ffe5d9"/>
-                    <circle cx="25" cy="80" r="10" fill="#fcd5ce"/>
-                    <circle cx="45" cy="65" r="4" fill="#ffb5a7"/>
+            <!-- Whimsical Floral Overlay on Envelope Front -->
+            <div class="absolute inset-0 pointer-events-none z-[8] overflow-visible">
+                
+                <!-- Left Floral Cluster -->
+                <svg class="absolute -bottom-[60px] -left-[70px] w-64 h-64 drop-shadow-md" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Stems & Leaves -->
+                    <path d="M 50 160 Q 100 200 180 180" stroke="#c4d8ce" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 80 130 Q 30 70 80 30" stroke="#c4d8ce" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 80 30 Q 110 40 100 70 Q 70 70 80 30 Z" fill="#c4d8ce"/>
+                    
+                    <!-- Small Peach/White Flower -->
+                    <g transform="translate(60, 95) rotate(15) scale(0.65)">
+                        <path d="M0,0 Q25,-35 50,0 Q25,35 0,0" fill="#fbe3dc"/>
+                        <path d="M0,0 Q-25,-35 -50,0 Q-25,35 0,0" fill="#fbe3dc"/>
+                        <path d="M0,0 Q35,25 0,50 Q-35,25 0,0" fill="#fbe3dc"/>
+                        <path d="M0,0 Q35,-25 0,-50 Q-35,-25 0,0" fill="#fbe3dc"/>
+                        <circle cx="0" cy="0" r="10" fill="#f6b8a7"/>
+                    </g>
+
+                    <!-- Large White Flower -->
+                    <g transform="translate(100, 150) rotate(35)">
+                        <path d="M0,0 Q35,-45 70,0 Q35,45 0,0" fill="#ffffff"/>
+                        <path d="M0,0 Q-35,-45 -70,0 Q-35,45 0,0" fill="#ffffff"/>
+                        <path d="M0,0 Q45,35 0,70 Q-45,35 0,0" fill="#ffffff"/>
+                        <path d="M0,0 Q45,-35 0,-70 Q-45,-35 0,0" fill="#ffffff"/>
+                        <circle cx="0" cy="0" r="14" fill="#f6b8a7"/>
+                    </g>
+                </svg>
+
+                <!-- Right Floral Cluster -->
+                <svg class="absolute -bottom-[50px] -right-[60px] w-56 h-56 drop-shadow-md" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Stems & Leaves -->
+                    <path d="M 20 170 Q 100 210 180 150" stroke="#c4d8ce" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 100 140 Q 160 100 160 50" stroke="#c4d8ce" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 160 50 Q 130 50 120 80 Q 150 90 160 50 Z" fill="#c4d8ce"/>
+                    
+                    <!-- Peach Bud -->
+                    <circle cx="160" cy="25" r="8" fill="#f6b8a7"/>
+
+                    <!-- Medium White Flower -->
+                    <g transform="translate(90, 150) rotate(-15) scale(0.8)">
+                        <path d="M0,0 Q35,-45 70,0 Q35,45 0,0" fill="#ffffff"/>
+                        <path d="M0,0 Q-35,-45 -70,0 Q-35,45 0,0" fill="#ffffff"/>
+                        <path d="M0,0 Q45,35 0,70 Q-45,35 0,0" fill="#ffffff"/>
+                        <path d="M0,0 Q45,-35 0,-70 Q-45,-35 0,0" fill="#ffffff"/>
+                        <circle cx="0" cy="0" r="14" fill="#f6b8a7"/>
+                    </g>
+                </svg>
+
+                <!-- Floating Star Sparkles -->
+                <!-- Left Gold Sparkle -->
+                <svg class="absolute top-1/3 -left-12 w-10 h-10 text-[#dcca64] whimsical-sparkle" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
+                </svg>
+                <!-- Top Right Peach/Gold Sparkle -->
+                <svg class="absolute -top-10 -right-4 w-7 h-7 text-[#eab089] whimsical-sparkle" style="animation-delay: 0.5s;" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
+                </svg>
+                <!-- Top Center Small Gold Sparkle -->
+                <svg class="absolute top-10 right-1/4 w-5 h-5 text-[#f6cb87] whimsical-sparkle" style="animation-delay: 1.2s;" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
                 </svg>
             </div>
         </div>
@@ -762,34 +798,28 @@
     <script>
         // --- Envelope Logic ---
         function handleEnvelopeOpen() {
-            // 1. Remove the gentle bounce
             const envelopeWrapper = document.getElementById('envelope-wrapper');
             envelopeWrapper.classList.remove('envelope-hover-anim');
 
-            // 2. Hide the helper text
             const tapInstruction = document.getElementById('tap-instruction');
             if (tapInstruction) tapInstruction.style.opacity = '0';
 
-            // 3. Wait for the CSS envelope animation (sliding card up) to complete (~1.2s total)
             setTimeout(() => {
                 const overlay = document.getElementById('envelope-overlay');
                 
-                // Start fading out the entire overlay
                 overlay.style.opacity = '0';
                 
-                // 4. Once faded out, remove it and unlock the main page
                 setTimeout(() => {
                     overlay.style.display = 'none';
                     document.body.classList.remove('locked-scroll');
                     
-                    // Slide Navbar into view
                     const nav = document.getElementById('main-nav');
                     if(nav) {
                         nav.classList.remove('opacity-0', '-translate-y-full');
                         nav.classList.add('opacity-100', 'translate-y-0');
                     }
-                }, 1000); // Wait 1s for the fade out transition
-            }, 3400); // 1.4s gives the user enough time to see the card slide out fully
+                }, 1000);
+            }, 3400);
         }
 
         // Nav Menu Toggle Function
@@ -798,7 +828,6 @@
             menu.classList.toggle('opacity-0');
             menu.classList.toggle('pointer-events-none');
             
-            // Toggle body scrolling when menu is open
             if(menu.classList.contains('opacity-0')) {
                 document.body.style.overflow = '';
             } else {
