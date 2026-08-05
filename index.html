@@ -264,7 +264,24 @@
     <div id="envelope-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center pointer-events-auto">
         <div id="envelope-wrapper" class="envelope-container envelope-hover-anim relative">
             <input id="flap" type="checkbox" onchange="handleEnvelopeOpen()"/>
-            <label class="flap" for="flap"></label>
+            
+            <label class="flap" for="flap">
+                <!-- Flap Wax Seal Flower -->
+                <div class="absolute flex items-center justify-center drop-shadow-md transition-transform duration-300 hover:scale-[1.2]" style="top: 95px; left: 160px; transform: translate(-50%, -50%);">
+                    <svg viewBox="0 0 100 100" width="60" height="60">
+                        <path d="M50 50 Q 20 30 15 55 Q 35 70 50 50 Z" fill="#b9cec2" />
+                        <path d="M50 50 Q 80 30 85 55 Q 65 70 50 50 Z" fill="#b9cec2" />
+                        <circle cx="50" cy="35" r="14" fill="#fcd5ce" />
+                        <circle cx="36" cy="48" r="14" fill="#fcd5ce" />
+                        <circle cx="64" cy="48" r="14" fill="#fcd5ce" />
+                        <circle cx="42" cy="62" r="14" fill="#fcd5ce" />
+                        <circle cx="58" cy="62" r="14" fill="#fcd5ce" />
+                        <circle cx="50" cy="51" r="8" fill="#ffe5d9" />
+                        <circle cx="50" cy="51" r="3" fill="#ffb5a7" />
+                    </svg>
+                </div>
+            </label>
+            
             <div class="envelope-back"></div>
             
             <!-- Sliding Card Content -->
@@ -275,6 +292,28 @@
             </div>
             
             <div class="card-front"></div>
+
+            <!-- Envelope Body Flowers (Bottom Left) -->
+            <div class="absolute bottom-[-15px] left-[-20px] pointer-events-none z-[8] drop-shadow-lg">
+                <svg viewBox="0 0 100 100" width="90" height="90">
+                    <path d="M10 90 Q 30 40 70 70 Q 30 100 10 90 Z" fill="#d8e2dc"/>
+                    <path d="M20 70 Q 40 20 80 50 Q 40 80 20 70 Z" fill="#b9cec2"/>
+                    <circle cx="45" cy="65" r="16" fill="#fcd5ce"/>
+                    <circle cx="70" cy="75" r="12" fill="#ffe5d9"/>
+                    <circle cx="30" cy="85" r="10" fill="#ffb5a7"/>
+                    <circle cx="45" cy="65" r="5" fill="#ffe5d9"/>
+                </svg>
+            </div>
+
+            <!-- Envelope Body Flowers (Bottom Right) -->
+            <div class="absolute bottom-[-10px] right-[-15px] pointer-events-none z-[8] drop-shadow-lg transform scale-x-[-1]">
+                <svg viewBox="0 0 100 100" width="70" height="70">
+                    <path d="M10 90 Q 30 40 70 70 Q 30 100 10 90 Z" fill="#d8e2dc"/>
+                    <circle cx="45" cy="65" r="14" fill="#ffe5d9"/>
+                    <circle cx="25" cy="80" r="10" fill="#fcd5ce"/>
+                    <circle cx="45" cy="65" r="4" fill="#ffb5a7"/>
+                </svg>
+            </div>
         </div>
 
         <div id="tap-instruction" class="absolute bottom-16 md:bottom-24 font-sans text-xs tracking-widest uppercase font-bold text-[#738b81] animate-pulse transition-opacity duration-300 pointer-events-none">
@@ -564,13 +603,11 @@
                 <p class="font-sans text-[#2d4a3e] font-bold text-sm mb-1">We'd love to know if you can make it 🤍</p>
                 <p class="font-sans text-[#738b81] text-xs font-bold mb-8 uppercase tracking-wide">Please RSVP on or before August 23</p>
 
-                <!-- 1. ADDED ACTION AND METHOD HERE -->
                 <form action="https://formspree.io/f/xeeynenn" method="POST" class="pastel-glass rounded-[2rem] p-6 text-left space-y-6 w-full shadow-lg">
                     
                     <!-- Name Input -->
                     <div>
                         <label class="block font-sans text-[#738b81] text-sm font-bold mb-2">Your name</label>
-                        <!-- 2. ADDED name="guest_name" AND required -->
                         <input type="text" name="guest_name" placeholder="Enter your name" required class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans font-semibold text-sm text-[#2d4a3e] shadow-sm transition-all">
                     </div>
 
@@ -579,7 +616,6 @@
                         <label class="block font-sans text-[#738b81] text-sm font-bold mb-2">Will you attend?</label>
                         <div class="grid grid-cols-2 gap-3">
                             <label class="cursor-pointer">
-                                <!-- (Already has name="attendance") added required -->
                                 <input type="radio" name="attendance" value="yes" required class="peer sr-only">
                                 <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#ffb5a7] peer-checked:text-white peer-checked:border-[#ffb5a7] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-bold">
                                     Yes, I'll be there! 🎉
@@ -604,11 +640,9 @@
                         <label class="block font-sans text-[#738b81] text-sm font-bold mb-2 flex justify-between">
                             Leave a message <span class="font-semibold text-xs opacity-70">(optional)</span>
                         </label>
-                        <!-- 3. ADDED name="message" -->
                         <textarea name="message" rows="3" placeholder="A little note for Kiarra and her parents 🤍" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans font-semibold text-sm text-[#2d4a3e] shadow-sm transition-all resize-none"></textarea>
                     </div>
 
-                    <!-- 4. CHANGED FROM type="button" TO type="submit" -->
                     <button type="submit" class="w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-xl shadow-md hover:bg-[#ff9380] hover:shadow-lg transition-all font-bold mt-2">
                         Save my spot 🤍
                     </button>
