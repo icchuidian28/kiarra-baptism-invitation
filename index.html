@@ -74,7 +74,7 @@
             display: none;
         }
 
-        .envelope-container {
+        /* .envelope-container {
             position: relative;
             filter: drop-shadow(0 20px 40px rgba(235, 156, 176, 0.15));
             transform: scale(1.1);
@@ -87,6 +87,19 @@
         }
         .envelope-hover-anim {
             animation: envelope-hover 3s infinite ease-in-out;
+        } */
+
+        .envelope-container {
+            position: relative;
+            filter: drop-shadow(0 20px 40px rgba(235, 156, 176, 0.15));
+            /* Uses the responsive variable instead of a hardcoded 1.1 */
+            transform: scale(var(--env-scale));
+            transition: transform 0.3s ease;
+        }
+        
+        @keyframes envelope-hover {
+            0%, 100% { transform: translateY(0) scale(var(--env-scale)); }
+            50% { transform: translateY(-8px) scale(var(--env-scale)); }
         }
 
         .envelope-back {
