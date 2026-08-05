@@ -7,6 +7,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Added Tailwind Config to properly map the fonts -->
     <script>
         tailwind.config = {
             theme: {
@@ -23,6 +24,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Changed Poppins to Nunito to match the rounded "Mustela" aesthetic -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
@@ -41,6 +43,7 @@
             overflow-x: hidden;
         }
 
+        /* Mobile-safe fixed background using a pseudo-element */
         body::before {
             content: "";
             position: fixed;
@@ -48,7 +51,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: -5; 
+            z-index: -5; /* Keeps it behind everything else */
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), 
                 url('background.jpg');
@@ -57,9 +60,68 @@
             background-repeat: no-repeat;
         }
 
+        /* Prevent scroll before doors open */
         .locked-scroll {
             overflow: hidden !important;
             height: 100vh;
+        }
+
+        /* Fixed Pastel Floral Corners */
+        .floral-corner {
+            position: fixed;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.85;
+            filter: drop-shadow(0 15px 25px rgba(252, 213, 206, 0.4));
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg) scale(1); }
+            50% { transform: rotate(3deg) scale(1.02); }
+        }
+        .sway-animation { animation: sway 7s ease-in-out infinite; }
+
+        /* Floating Petals Animation */
+        @keyframes drift {
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(105vh) rotate(360deg) translateX(40px); opacity: 0; }
+        }
+        .petal {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            animation: drift linear infinite;
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* Soft Glassmorphism */
+        .pastel-glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px rgba(252, 213, 206, 0.3);
+        }
+
+        /* Glowing text to stand out against busy backgrounds */
+        .text-glow {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8), 2px 2px 5px rgba(255, 255, 255, 0.9);
         }
 
         /* ----------------------------------
@@ -182,65 +244,18 @@
             transition-delay: 0.2s; 
         }
 
-        /* ----------------------------------
-           REST OF SITE CSS 
-           ---------------------------------- */
-        .floral-corner {
-            position: fixed;
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.85;
-            filter: drop-shadow(0 15px 25px rgba(252, 213, 206, 0.4));
+        /* Custom Scrollbar for Modals */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-
-        @keyframes sway {
-            0%, 100% { transform: rotate(-3deg) scale(1); }
-            50% { transform: rotate(3deg) scale(1.02); }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 229, 217, 0.3); 
+            border-radius: 10px;
         }
-        .sway-animation { animation: sway 7s ease-in-out infinite; }
-
-        @keyframes drift {
-            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(105vh) rotate(360deg) translateX(40px); opacity: 0; }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ffb5a7; 
+            border-radius: 10px;
         }
-        .petal {
-            position: fixed;
-            z-index: 0;
-            pointer-events: none;
-            animation: drift linear infinite;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-
-        .pastel-glass {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 32px rgba(252, 213, 206, 0.3);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8), 2px 2px 5px rgba(255, 255, 255, 0.9);
-        }
-
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 229, 217, 0.3); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ffb5a7; border-radius: 10px; }
     </style>
 </head>
 <body class="font-sans antialiased relative selection:bg-pink-200 locked-scroll">
@@ -425,7 +440,7 @@
             <!-- Kiarra Image 1 -->
             <div class="relative w-full max-w-[280px] mt-16 reveal">
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#ffe5d9] to-[#e8e8f2] rounded-[3rem] blur-[20px] transform scale-110 -z-10 opacity-70"></div>
-                <img src="kiarra1.jpg" alt="Baby Kiarra" class="w-full h-auto rounded-[3rem] shadow-xl border-4 border-white object-cover aspect-[4/5]">
+                <img src="kiarra1.jpg" alt="Baby Kiarra" class="w-full h-auto rounded-[3rem] shadow-xl border-4 border-white object-cover aspect-[4/5]" onerror="this.outerHTML='<div class=\'w-full h-64 bg-white/50 rounded-[3rem] border border-white flex items-center justify-center text-[#ff9380] font-sans text-sm\'>kiarra1.jpg here</div>'">
             </div>
         </section>
 
@@ -483,7 +498,7 @@
                 
                 <div class="flex flex-col gap-3">
                     <div class="pastel-glass rounded-2xl p-4 flex items-center gap-4 hover:scale-[1.02] transition-transform">
-                        <img src="https://placehold.co/100x100/e2e8f0/64748b?text=Gift" alt="Mustela" class="w-12 h-12 rounded-full shadow-sm flex-shrink-0 object-cover border-2 border-white bg-white/50">
+                        <img src="mustela.jpg" alt="Mustela" class="w-12 h-12 rounded-full shadow-sm flex-shrink-0 object-cover border-2 border-white bg-white/50">
                         <div class="flex-grow text-left">
                             <p class="font-serif text-[#2d4a3e] font-semibold text-[1.05rem]">Mustela</p>
                             <p class="font-sans font-semibold text-xs text-[#738b81] leading-snug mt-0.5">Gentle Cleansing Gel, Shampoo, No Rinse, Hydra Bebe</p>
@@ -492,7 +507,7 @@
                     </div>
                     
                     <div class="pastel-glass rounded-2xl p-4 flex items-center gap-4 hover:scale-[1.02] transition-transform">
-                        <img src="https://placehold.co/100x100/e2e8f0/64748b?text=Gift" alt="Uni-Love" class="w-12 h-12 rounded-full shadow-sm flex-shrink-0 object-cover border-2 border-white bg-white/50">
+                        <img src="unilove.jpg" alt="Uni-Love" class="w-12 h-12 rounded-full shadow-sm flex-shrink-0 object-cover border-2 border-white bg-white/50">
                         <div class="flex-grow text-left">
                             <p class="font-serif text-[#2d4a3e] font-semibold text-[1.05rem]">Uni-Love Airpro Baby Diaper</p>
                             <p class="font-sans font-semibold text-xs text-[#738b81] mt-0.5">Large size</p>
@@ -501,7 +516,7 @@
                     </div>
                     
                     <div class="pastel-glass rounded-2xl p-4 flex items-center gap-4 hover:scale-[1.02] transition-transform">
-                        <img src="https://placehold.co/100x100/e2e8f0/64748b?text=Gift" alt="EQ Baby Wipes" class="w-12 h-12 rounded-full shadow-sm flex-shrink-0 object-cover border-2 border-white bg-white/50">
+                        <img src="eqbabywipes.jpg" alt="EQ Baby Wipes" class="w-12 h-12 rounded-full shadow-sm flex-shrink-0 object-cover border-2 border-white bg-white/50">
                         <div class="flex-grow text-left">
                             <p class="font-serif text-[#2d4a3e] font-semibold text-[1.05rem]">EQ Baby Wipes</p>
                             <p class="font-sans font-semibold text-xs text-[#738b81] mt-0.5">Pure Water</p>
@@ -549,17 +564,22 @@
                 <p class="font-sans text-[#2d4a3e] font-bold text-sm mb-1">We'd love to know if you can make it 🤍</p>
                 <p class="font-sans text-[#738b81] text-xs font-bold mb-8 uppercase tracking-wide">Please RSVP on or before August 23</p>
 
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submission simulation');" class="pastel-glass rounded-[2rem] p-6 text-left space-y-6 w-full shadow-lg">
+                <!-- 1. ADDED ACTION AND METHOD HERE -->
+                <form action="https://formspree.io/f/xeeynenn" method="POST" class="pastel-glass rounded-[2rem] p-6 text-left space-y-6 w-full shadow-lg">
                     
+                    <!-- Name Input -->
                     <div>
                         <label class="block font-sans text-[#738b81] text-sm font-bold mb-2">Your name</label>
+                        <!-- 2. ADDED name="guest_name" AND required -->
                         <input type="text" name="guest_name" placeholder="Enter your name" required class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans font-semibold text-sm text-[#2d4a3e] shadow-sm transition-all">
                     </div>
 
+                    <!-- Attendance Radios -->
                     <div>
                         <label class="block font-sans text-[#738b81] text-sm font-bold mb-2">Will you attend?</label>
                         <div class="grid grid-cols-2 gap-3">
                             <label class="cursor-pointer">
+                                <!-- (Already has name="attendance") added required -->
                                 <input type="radio" name="attendance" value="yes" required class="peer sr-only">
                                 <div class="text-center px-2 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 peer-checked:bg-[#ffb5a7] peer-checked:text-white peer-checked:border-[#ffb5a7] transition-colors font-sans text-sm text-[#2d4a3e] shadow-sm font-bold">
                                     Yes, I'll be there! 🎉
@@ -574,17 +594,21 @@
                         </div>
                     </div>
 
+                    <!-- Notice Alert -->
                     <div class="bg-[#fff9e6] border border-[#ffe082] rounded-xl p-4 text-xs font-sans font-semibold text-[#8a6d3b] leading-relaxed shadow-sm">
                         <strong class="font-bold">Note: 𝑵𝒐 𝒑𝒍𝒖𝒔 𝒐𝒏𝒆.</strong> To help us accommodate everyone, this invitation is for one guest only. If you need to bring a companion, please let us know below, and we’ll do our best to accommodate if space allows. 🤍
                     </div>
 
+                    <!-- Message Textarea -->
                     <div>
                         <label class="block font-sans text-[#738b81] text-sm font-bold mb-2 flex justify-between">
                             Leave a message <span class="font-semibold text-xs opacity-70">(optional)</span>
                         </label>
+                        <!-- 3. ADDED name="message" -->
                         <textarea name="message" rows="3" placeholder="A little note for Kiarra and her parents 🤍" class="w-full px-4 py-3 rounded-xl border border-[#ffe5d9] bg-white/60 focus:outline-none focus:border-[#ffb5a7] focus:ring-1 focus:ring-[#ffb5a7] font-sans font-semibold text-sm text-[#2d4a3e] shadow-sm transition-all resize-none"></textarea>
                     </div>
 
+                    <!-- 4. CHANGED FROM type="button" TO type="submit" -->
                     <button type="submit" class="w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-xl shadow-md hover:bg-[#ff9380] hover:shadow-lg transition-all font-bold mt-2">
                         Save my spot 🤍
                     </button>
@@ -595,7 +619,7 @@
         <!-- SECTION 6: Final Image & Goodbye -->
         <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 pb-24 space-y-12">
             <div class="w-full rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white reveal relative">
-                <img src="kiarra5.jpg" alt="Baby Kiarra" class="w-full h-auto object-cover aspect-[4/5]">
+                <img src="kiarra5.jpg" alt="Baby Kiarra" class="w-full h-auto object-cover aspect-[4/5]" onerror="this.outerHTML='<div class=\'w-full aspect-[4/5] bg-white/50 flex items-center justify-center text-[#ff9380] font-sans text-sm\'>kiarra5.jpg here</div>'">
             </div>
             
             <h2 class="font-script text-5xl md:text-6xl text-[#2d4a3e] reveal delay-200 leading-tight text-glow">
@@ -608,7 +632,9 @@
 
     <!-- MAP MODAL -->
     <div id="mapModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+        <!-- Backdrop -->
         <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="mapBackdrop" onclick="closeModal('mapModal')"></div>
+        <!-- Modal Content -->
         <div class="relative bg-white/90 backdrop-blur-xl p-6 md:p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="mapContent">
             <h3 id="mapModalTitle" class="font-serif text-3xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Map</h3>
             
@@ -630,14 +656,29 @@
             
             <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
                 <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-bold">
-                    <li>Frank Louie Daya</li><li>Harygene Casin</li><li>Brandon Dalisay</li>
-                    <li>Ronald Cadawas</li><li>Marvin Travecilla</li><li>Aljohn Bornilla</li>
-                    <li>Timothy Isaac</li><li>Joel Batomalaque</li><li>Arvin Rosette</li>
-                    <li>Cj Bacud</li><li>Ferdausi Bayao</li><li>Ruben Carandang</li>
-                    <li>RAM Genete</li><li>Jarrel Vee Peñaranda</li><li>Lemuel Macapil</li>
-                    <li>John Miche</li><li>Darwin Jay Ibañez</li><li>Gielito Emperado</li>
-                    <li>Ken Vincent Batac</li><li>Micheal Angelo Lugo</li><li>Dustin Belmonte</li>
-                    <li>Mark Jay-Ar Pulga</li><li>Mico Fondevilla</li>
+                    <li>Frank Louie Daya</li>
+                    <li>Harygene Casin</li>
+                    <li>Brandon Dalisay</li>
+                    <li>Ronald Cadawas</li>
+                    <li>Marvin Travecilla</li>
+                    <li>Aljohn Bornilla</li>
+                    <li>Timothy Isaac</li>
+                    <li>Joel Batomalaque</li>
+                    <li>Arvin Rosette</li>
+                    <li>Cj Bacud</li>
+                    <li>Ferdausi Bayao</li>
+                    <li>Ruben Carandang</li>
+                    <li>RAM Genete</li>
+                    <li>Jarrel Vee Peñaranda</li>
+                    <li>Lemuel Macapil</li>
+                    <li>John Miche</li>
+                    <li>Darwin Jay Ibañez</li>
+                    <li>Gielito Emperado</li>
+                    <li>Ken Vincent Batac</li>
+                    <li>Micheal Angelo Lugo</li>
+                    <li>Dustin Belmonte</li>
+                    <li>Mark Jay-Ar Pulga</li>
+                    <li>Mico Fondevilla</li>
                 </ul>
             </div>
 
@@ -655,12 +696,24 @@
             
             <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
                 <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-bold">
-                    <li>Cathyrine Manaog</li><li>Jailyn Gaille Emperado</li><li>Joyce Ann Balingbing</li>
-                    <li>Jhanmariefer Viesca</li><li>Claire Ann Fabian</li><li>Mary Joyce Laviña</li>
-                    <li>Mayzel Juliano</li><li>Avegail Cipcon</li><li>Novijil Ramos</li>
-                    <li>Chaztyn Campanilla</li><li>Nathalie Moron</li><li>Ira Celiz</li>
-                    <li>Riena Ella Nobleza</li><li>Rosey Cruz</li><li>Styphanie Nabua</li>
-                    <li>Trisha Mae Emperado</li><li>Jeah Tagudar</li><li>Mary Santos</li>
+                    <li>Cathyrine Manaog</li>
+                    <li>Jailyn Gaille Emperado</li>
+                    <li>Joyce Ann Balingbing</li>
+                    <li>Jhanmariefer Viesca</li>
+                    <li>Claire Ann Fabian</li>
+                    <li>Mary Joyce Laviña</li>
+                    <li>Mayzel Juliano</li>
+                    <li>Avegail Cipcon</li>
+                    <li>Novijil Ramos</li>
+                    <li>Chaztyn Campanilla</li>
+                    <li>Nathalie Moron</li>
+                    <li>Ira Celiz</li>
+                    <li>Riena Ella Nobleza</li>
+                    <li>Rosey Cruz</li>
+                    <li>Styphanie Nabua</li>
+                    <li>Trisha Mae Emperado</li>
+                    <li>Jeah Tagudar</li>
+                    <li>Mary Santos</li>
                     <li>Trisha Ramos</li>
                 </ul>
             </div>
@@ -671,6 +724,7 @@
         </div>
     </div>
 
+    <!-- Interactive Scripts -->
     <script>
         // --- Envelope Logic ---
         function handleEnvelopeOpen() {
@@ -704,12 +758,13 @@
             }, 3400); // 1.4s gives the user enough time to see the card slide out fully
         }
 
-        // --- Nav Menu Toggle Function ---
+        // Nav Menu Toggle Function
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('opacity-0');
             menu.classList.toggle('pointer-events-none');
             
+            // Toggle body scrolling when menu is open
             if(menu.classList.contains('opacity-0')) {
                 document.body.style.overflow = '';
             } else {
@@ -717,14 +772,14 @@
             }
         }
 
-        // --- Map Modal Helper ---
+        // Map Modal Helper
         function openMapModal(title, url) {
             document.getElementById('mapModalTitle').innerText = title;
             document.getElementById('mapIframe').src = url;
             openModal('mapModal');
         }
 
-        // --- Modal Logic ---
+        // Modal Logic
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             const backdrop = modal.querySelector('div:nth-child(1)');
@@ -764,7 +819,7 @@
             }, 300);
         }
 
-        // --- Scroll Animation Logic ---
+        // Scroll Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
 
