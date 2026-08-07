@@ -64,7 +64,7 @@
            ---------------------------------- */
         #envelope-overlay {
             transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(0,0,0,0.85); /* Darkened background to match the photo's contrast */
+            background: rgba(0,0,0,0.85);
             backdrop-filter: blur(5px);
         }
 
@@ -72,19 +72,23 @@
             display: none;
         }
 
-        /* Portrait Container for Gatefold */
+        /* Maximized Portrait Container for Gatefold */
         .envelope-container {
             position: relative;
-            width: 300px;
-            height: 480px; /* Tall portrait ratio */
+            /* Viewport-relative sizing for maximum screen fill */
+            width: 92vw; 
+            height: 88vh; 
+            /* Caps width on desktops so it doesn't look distorted */
+            max-width: 550px; 
+            max-height: 900px;
             filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4));
-            transform: scale(var(--env-scale, 1.05));
+            transform: scale(var(--env-scale, 1));
             transition: transform 0.3s ease;
         }
         
         @keyframes envelope-hover {
-            0%, 100% { transform: translateY(0) scale(var(--env-scale, 1.05)); }
-            50% { transform: translateY(-8px) scale(var(--env-scale, 1.05)); }
+            0%, 100% { transform: translateY(0) scale(var(--env-scale, 1)); }
+            50% { transform: translateY(-8px) scale(var(--env-scale, 1)); }
         }
         
         .envelope-hover-anim {
@@ -106,19 +110,20 @@
             position: absolute;
             inset: 0;
             background-color: var(--env-back);
-            border-radius: 4px;
+            border-radius: 6px;
             z-index: 1;
             box-shadow: inset 0 0 40px rgba(0,0,0,0.15);
         }
 
-        /* Adjusted Card for Portrait Frame */
+        /* Maximized Inner Card */
         .card {
             position: absolute;
-            width: 280px;
-            height: 460px;
+            /* dynamically calculate to always fit just inside the envelope container */
+            width: calc(100% - 24px);
+            height: calc(100% - 24px);
             background-color: #ffffff;
-            top: 10px;
-            left: 10px;
+            top: 12px;
+            left: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -127,7 +132,7 @@
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -143,16 +148,15 @@
 
         .left-door {
             left: 0;
-            border-radius: 4px 0 0 4px;
+            border-radius: 6px 0 0 6px;
             transform-origin: left center;
         }
 
         .right-door {
             right: 0;
-            border-radius: 0 4px 4px 0;
-            /* Casts a shadow over the left door exactly like the photo */
+            border-radius: 0 6px 6px 0;
             box-shadow: -6px 0 15px rgba(0,0,0,0.15); 
-            z-index: 5; /* Ensures right overlaps left slightly */
+            z-index: 5; 
             transform-origin: right center;
         }
 
@@ -169,7 +173,7 @@
 
         #flap:checked ~ .card {
             z-index: 6;
-            transform: scale(1.05);
+            transform: scale(1.03); /* Scaled down slightly so it doesn't overflow the viewport */
             transition-delay: 0.2s; 
             box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         }
@@ -178,9 +182,8 @@
            WAX SEAL 
            ---------------------------------- */
         .wax-seal {
-            /* Perfectly centered over the vertical split */
-            top: calc(50% - 35px);
-            left: calc(50% - 35px);
+            top: calc(50% - 40px); /* adjusted slightly larger for the bigger envelope */
+            left: calc(50% - 40px);
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 6;
         }
@@ -192,7 +195,7 @@
         }
 
         /* ----------------------------------
-           REST OF SITE CSS (Unchanged)
+           REST OF SITE CSS
            ---------------------------------- */
         .floral-corner {
             position: fixed;
@@ -263,13 +266,13 @@
             <div class="envelope-back paper-texture opacity-80"></div>
             
             <!-- Inner Portrait Card -->
-            <div class="card p-6">
-                <!-- Inner Whimsical Design to match the site theme -->
-                <svg class="w-10 h-10 text-[#ffb5a7] mb-6 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
-                <p class="font-script text-5xl text-[#f6b8a7] mb-4 leading-none">Kiarra Leigh</p>
-                <div class="h-px w-20 bg-[#ffb5a7] mb-6 opacity-50"></div>
-                <p class="font-sans text-[0.7rem] tracking-[0.25em] font-bold uppercase text-[#738b81] mb-2">Baptism</p>
-                <p class="font-sans text-[0.7rem] tracking-[0.25em] font-bold uppercase text-[#738b81]">Invitation</p>
+            <div class="card p-6 md:p-10">
+                <!-- Inner Whimsical Design (Increased font/icon sizes to fill the max space nicely) -->
+                <svg class="w-12 h-12 md:w-16 md:h-16 text-[#ffb5a7] mb-6 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 12c0 6 8 10 8 10s8-4 8-10c0-6-4-10-8-10z"/></svg>
+                <p class="font-script text-6xl md:text-7xl text-[#f6b8a7] mb-6 leading-none">Kiarra Leigh</p>
+                <div class="h-px w-24 bg-[#ffb5a7] mb-8 opacity-50"></div>
+                <p class="font-sans text-xs md:text-sm tracking-[0.25em] font-bold uppercase text-[#738b81] mb-2">Baptism</p>
+                <p class="font-sans text-xs md:text-sm tracking-[0.25em] font-bold uppercase text-[#738b81]">Invitation</p>
             </div>
             
             <!-- Left and Right Sliding Doors (Gatefold) -->
@@ -277,11 +280,11 @@
             <div class="envelope-door right-door paper-texture"></div>
 
             <!-- Custom Pearl/Wax Seal with Bow -->
-            <label for="flap" class="wax-seal absolute w-[70px] h-[70px] bg-gradient-to-br from-[#f8d0d6] via-[#e5b3bd] to-[#cca0a9] rounded-full cursor-pointer flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.3),inset_0_3px_5px_rgba(255,255,255,0.7),inset_0_-3px_5px_rgba(0,0,0,0.1)] border border-white/40 ring-4 ring-[#e5b3bd]/30">
+            <label for="flap" class="wax-seal absolute w-[80px] h-[80px] bg-gradient-to-br from-[#f8d0d6] via-[#e5b3bd] to-[#cca0a9] rounded-full cursor-pointer flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.3),inset_0_3px_5px_rgba(255,255,255,0.7),inset_0_-3px_5px_rgba(0,0,0,0.1)] border border-white/40 ring-4 ring-[#e5b3bd]/30 hover:scale-105 transition-transform">
                 <!-- Outer ridge inner ring to mimic wax stamp indent -->
                 <div class="absolute inset-[4px] rounded-full border border-white/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]"></div>
                 <!-- Bow SVG mimicking the impression -->
-                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1" class="w-8 h-8 relative z-10 drop-shadow-[0_1px_0_rgba(255,255,255,0.4)]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1" class="w-10 h-10 relative z-10 drop-shadow-[0_1px_0_rgba(255,255,255,0.4)]">
                     <!-- Bow loops -->
                     <path d="M12 12C9 9 5 10 5 13C5 15.5 8 16 12 12Z" fill="rgba(255,255,255,0.1)"/>
                     <path d="M12 12C15 9 19 10 19 13C19 15.5 16 16 12 12Z" fill="rgba(255,255,255,0.1)"/>
@@ -294,7 +297,7 @@
             </label>
         </div>
 
-        <div id="tap-instruction" class="absolute bottom-16 md:bottom-24 font-sans text-[10px] tracking-[0.3em] uppercase font-bold text-white/70 animate-pulse transition-opacity duration-300 pointer-events-none drop-shadow-md">
+        <div id="tap-instruction" class="absolute bottom-6 md:bottom-12 font-sans text-xs tracking-[0.3em] uppercase font-bold text-white/70 animate-pulse transition-opacity duration-300 pointer-events-none drop-shadow-md">
             Tap seal to open
         </div>
     </div>
