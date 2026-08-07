@@ -27,11 +27,9 @@
     
     <style>
         :root {
-            /* Updated Pastel Pink Envelope Palette to match the reference */
-            --env-back: #eb9cb0;       /* Darker dusty pink for the inside back */
-            --env-bottom: #f8a8b8;     /* Main pastel pink for front bottom */
-            --env-sides: #f4a2b2;      /* Slightly darker pink for front sides */
-            --env-flap: #fab0c0;       /* Lightest pastel pink for the top flap */
+            /* Updated Pastel Pink Envelope Palette */
+            --env-back: #e89eb0;       /* Inside back */
+            --env-flap: #fab0c0;       /* Main paper color for doors */
             --card-text: #2d4a3e;      /* Deep green to match the rest of the site */
         }
 
@@ -74,40 +72,37 @@
             display: none;
         }
 
-        /* .envelope-container {
-            position: relative;
-            filter: drop-shadow(0 20px 40px rgba(235, 156, 176, 0.15));
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-        }
-        
-        @keyframes envelope-hover {
-            0%, 100% { transform: translateY(0) scale(1.1); }
-            50% { transform: translateY(-8px) scale(1.1); }
-        }
-        .envelope-hover-anim {
-            animation: envelope-hover 3s infinite ease-in-out;
-        } */
-
         .envelope-container {
-            position: relative;
-            filter: drop-shadow(0 20px 40px rgba(235, 156, 176, 0.15));
-            /* Uses the responsive variable instead of a hardcoded 1.1 */
-            transform: scale(var(--env-scale));
-            transition: transform 0.3s ease;
-        }
-        
-        @keyframes envelope-hover {
-            0%, 100% { transform: translateY(0) scale(var(--env-scale)); }
-            50% { transform: translateY(-8px) scale(var(--env-scale)); }
-        }
-
-        .envelope-back {
             position: relative;
             width: 320px;
             height: 200px;
+            filter: drop-shadow(0 20px 40px rgba(235, 156, 176, 0.25));
+            transform: scale(var(--env-scale, 1.1));
+            transition: transform 0.3s ease;
+        }
+        
+        @keyframes envelope-hover {
+            0%, 100% { transform: translateY(0) scale(var(--env-scale, 1.1)); }
+            50% { transform: translateY(-8px) scale(var(--env-scale, 1.1)); }
+        }
+        
+        .envelope-hover-anim {
+            animation: envelope-hover 3s infinite ease-in-out;
+        }
+
+        /* Realistic Paper Texture to match the reference image */
+        .paper-texture {
+            background-color: var(--env-flap);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+        }
+
+        .envelope-back {
+            position: absolute;
+            inset: 0;
             background-color: var(--env-back);
-            border-radius: 4px;
+            border-radius: 6px;
+            z-index: 1;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
         }
 
         .card {
@@ -118,92 +113,74 @@
             top: 10px;
             left: 10px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            transition: all 0.5s ease-in-out;
-            z-index: 1;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
             cursor: pointer;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .card-front {
+        /* The Sliding Doors (Gatefold) */
+        .envelope-door {
             position: absolute;
-            width: 0;
-            height: 0;
-            border-bottom: 100px solid var(--env-bottom);
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
-            top: 100px;
-            left: 0;
-            z-index: 3;
-        }
-
-        .card-front:before, .card-front:after {
-            content: "";
-            position: absolute;
-            border-bottom: 100px solid transparent;
-            border-top: 100px solid transparent;
-            height: 0;
-            width: 0;
-        }
-
-        .card-front:before {
-            border-left: 161px solid transparent;
-            border-right: 161px solid var(--env-sides);
-            top: -100px;
-            left: -162px;
-        }
-
-        .card-front:after {
-            border-right: 161px solid transparent;
-            border-left: 161px solid var(--env-sides);
-            top: -100px;
-            left: -160px;
-        }
-
-        .flap {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-top: 110px solid var(--env-flap);
-            border-left: 160px solid transparent;
-            border-right: 160px solid transparent;
             top: 0;
-            left: 0;
-            cursor: pointer;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.3s;
-            transform-origin: top;
+            width: 50%;
+            height: 100%;
             z-index: 4;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease-in-out;
         }
 
-        #flap:checked + .flap {
-            transform: rotateX(180deg);
-            z-index: 2; 
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.3s;
+        .left-door {
+            left: 0;
+            border-radius: 6px 0 0 6px;
+            border-right: 1px solid rgba(0,0,0,0.04);
+            box-shadow: 3px 0 10px rgba(0,0,0,0.1); /* Shadow casting over the right door */
+            transform-origin: left center;
         }
 
-        #flap:checked ~ .card-front {
-            z-index: 7;
+        .right-door {
+            right: 0;
+            border-radius: 0 6px 6px 0;
+            border-left: 1px solid rgba(255,255,255,0.5); /* Highlight edge */
+            transform-origin: right center;
+        }
+
+        /* Animation when checked */
+        #flap:checked ~ .left-door {
+            transform: translateX(-100%);
+            opacity: 0; 
+        }
+
+        #flap:checked ~ .right-door {
+            transform: translateX(100%);
+            opacity: 0; 
         }
 
         #flap:checked ~ .card {
-            z-index: 4;
-            transform: translateY(-80px);
+            z-index: 5;
+            transform: scale(1.05); /* Slight pop forward once opened */
             transition-delay: 0.2s; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         /* ----------------------------------
            WHIMSICAL ENVELOPE ADDITIONS 
            ---------------------------------- */
         .wax-seal {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Perfectly centered over the split */
+            top: calc(50% - 25px);
+            left: calc(50% - 25px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 6;
         }
 
         #flap:checked ~ .wax-seal {
             opacity: 0;
-            transform: scale(1.4) translateY(15px);
+            transform: scale(1.5);
             pointer-events: none;
         }
         
@@ -283,35 +260,34 @@
     <div id="envelope-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center pointer-events-auto">
         <div id="envelope-wrapper" class="envelope-container envelope-hover-anim relative">
             <input id="flap" type="checkbox" onchange="handleEnvelopeOpen()"/>
-            <label class="flap" for="flap"></label>
-            <div class="envelope-back"></div>
+            
+            <!-- Envelope Back -->
+            <div class="envelope-back paper-texture"></div>
             
             <!-- Sliding Card Content -->
-            <div class="card p-6 flex flex-col justify-center items-center">
+            <div class="card p-6">
                 <p class="font-script text-4xl text-[#f6b8a7] mb-2 leading-none">Kiarra Leigh</p>
                 <div class="h-px w-16 bg-[#ffb5a7] mb-2 opacity-50"></div>
                 <p class="font-sans text-[0.65rem] tracking-[0.2em] font-bold uppercase text-[#738b81]">Baptism Invitation</p>
             </div>
             
-            <div class="card-front"></div>
+            <!-- Left and Right Sliding Doors (Gatefold) -->
+            <div class="envelope-door left-door paper-texture"></div>
+            <div class="envelope-door right-door paper-texture"></div>
 
-            <!-- Custom Floral Wax Seal -->
-            <label for="flap" class="wax-seal absolute top-[85px] left-[135px] w-[50px] h-[50px] bg-gradient-to-br from-[#ffbfae] to-[#ffa391] rounded-full z-[8] cursor-pointer flex items-center justify-center shadow-[0_4px_10px_rgba(255,163,145,0.4),inset_0_2px_4px_rgba(255,255,255,0.4)] border-2 border-white/80">
-                <span class="font-script text-white text-2xl drop-shadow-sm leading-none pt-1 relative -left-[9px]">K</span>
+            <!-- Custom Floral Wax Seal (Centered) -->
+            <label for="flap" class="wax-seal absolute w-[50px] h-[50px] bg-gradient-to-br from-[#ffbfae] to-[#ffa391] rounded-full cursor-pointer flex items-center justify-center shadow-[0_6px_15px_rgba(255,163,145,0.4),inset_0_2px_4px_rgba(255,255,255,0.4)] border-2 border-white/80">
+                <!-- Center the 'K' nicely -->
+                <span class="font-script text-white text-2xl drop-shadow-sm leading-none pt-1">K</span>
             </label>
 
             <!-- Whimsical Floral Overlay on Envelope Front -->
             <div class="absolute inset-0 pointer-events-none z-[8] overflow-visible">
                 
-                <!-- Left Floral Cluster (Realigned to match reference photo) -->
+                <!-- Left Floral Cluster -->
                 <svg class="absolute -bottom-[45px] -left-[55px] w-64 h-64 drop-shadow-sm" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Curved Stem extending to the right underneath the envelope bottom -->
                     <path d="M 5 60 Q 15 150 175 160" stroke="#b8d4c8" stroke-width="3.5" stroke-linecap="round"/>
-                    
-                    <!-- Leaf looping up from the stem -->
                     <path d="M 32 100 C 15 65 35 45 48 55 C 58 68 45 92 32 100 Z" fill="#b8d4c8"/>
-                    
-                    <!-- Small Pink/Peach Flower (Placed higher & tucked behind main white flower) -->
                     <g transform="translate(18, 92) scale(0.48) rotate(-10)">
                         <path d="M0,0 Q25,-35 50,0 Q25,35 0,0" fill="#fbe3dc"/>
                         <path d="M0,0 Q-25,-35 -50,0 Q-25,35 0,0" fill="#fbe3dc"/>
@@ -319,8 +295,6 @@
                         <path d="M0,0 Q35,-25 0,-50 Q-35,-25 0,0" fill="#fbe3dc"/>
                         <circle cx="0" cy="0" r="12" fill="#f4ad9b"/>
                     </g>
-
-                    <!-- Large Main White Flower (Positioned overlapping the bottom-left corner) -->
                     <g transform="translate(68, 148) scale(0.95) rotate(10)">
                         <path d="M0,0 Q35,-45 70,0 Q35,45 0,0" fill="#ffffff"/>
                         <path d="M0,0 Q-35,-45 -70,0 Q-35,45 0,0" fill="#ffffff"/>
@@ -330,15 +304,10 @@
                     </g>
                 </svg>
 
-                <!-- Right Floral Cluster (Realigned to match reference photo) -->
+                <!-- Right Floral Cluster -->
                 <svg class="absolute -bottom-[30px] -right-[50px] w-56 h-56 drop-shadow-sm" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Stem curving up and right along the envelope side -->
                     <path d="M 10 165 Q 90 185 162 90" stroke="#b8d4c8" stroke-width="3.5" stroke-linecap="round"/>
-                    
-                    <!-- Leaf on right side -->
                     <path d="M 142 110 C 175 110 185 85 170 80 C 152 78 138 98 142 110 Z" fill="#b8d4c8"/>
-
-                    <!-- Medium White Flower (Positioned overlapping the bottom-right envelope corner) -->
                     <g transform="translate(98, 145) scale(0.72) rotate(-15)">
                         <path d="M0,0 Q35,-45 70,0 Q35,45 0,0" fill="#ffffff"/>
                         <path d="M0,0 Q-35,-45 -70,0 Q-35,45 0,0" fill="#ffffff"/>
@@ -349,15 +318,12 @@
                 </svg>
 
                 <!-- Floating Star Sparkles & Dots -->
-                <!-- Left Gold Sparkle -->
                 <svg class="absolute top-2 -left-10 w-9 h-9 text-[#e6cc72] whimsical-sparkle" viewBox="0 0 100 100" fill="currentColor">
                     <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
                 </svg>
-                <!-- Inner Envelope Small Sparkle -->
                 <svg class="absolute top-24 right-12 w-5 h-5 text-[#fadb7f] whimsical-sparkle" style="animation-delay: 0.8s;" viewBox="0 0 100 100" fill="currentColor">
                     <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
                 </svg>
-                <!-- Top Right Sparkle -->
                 <svg class="absolute -top-7 -right-5 w-8 h-8 text-[#e3a882] whimsical-sparkle" style="animation-delay: 0.4s;" viewBox="0 0 100 100" fill="currentColor">
                     <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
                 </svg>
@@ -366,25 +332,20 @@
         </div>
 
         <div id="tap-instruction" class="absolute bottom-16 md:bottom-24 font-sans text-xs tracking-widest uppercase font-bold text-[#738b81] animate-pulse transition-opacity duration-300 pointer-events-none">
-            Tap envelope to open 🤍
+            Tap seal to open 🤍
         </div>
     </div>
 
     <!-- MAIN NAVIGATION BAR -->
     <nav id="main-nav" class="fixed top-0 left-0 w-full z-[90] pastel-glass px-6 py-4 transition-all duration-700 opacity-0 -translate-y-full border-b border-white/50 shadow-sm">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <!-- Brand / Logo -->
             <a href="#" class="font-script text-3xl text-[#ff9380] text-glow drop-shadow-sm hover:scale-105 transition-transform">Kiarra</a>
-            
-            <!-- PC & Tablet Links -->
             <ul class="hidden md:flex space-x-8 font-sans text-xs tracking-widest uppercase font-bold text-[#738b81]">
                 <li><a href="#details" class="hover:text-[#ff9380] transition-colors">Details</a></li>
                 <li><a href="#godparents" class="hover:text-[#ff9380] transition-colors">Godparents</a></li>
                 <li><a href="#info" class="hover:text-[#ff9380] transition-colors">Info</a></li>
                 <li><a href="#rsvp" class="bg-[#ffb5a7] text-white px-4 py-2 rounded-full shadow-sm hover:bg-[#ff9380] transition-colors">RSVP</a></li>
             </ul>
-
-            <!-- Mobile Hamburger Button -->
             <button class="md:hidden text-[#738b81] hover:text-[#ff9380] transition-colors focus:outline-none p-2" onclick="toggleMobileMenu()">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -479,7 +440,7 @@
             </div>
         </section>
 
-        <!-- SECTION 2: Event Details (Grid Layout) -->
+        <!-- SECTION 2: Event Details -->
         <section id="details" class="min-h-[80vh] flex flex-col justify-center items-center p-6 w-full reveal text-center pt-24 scroll-mt-10">
             <p class="font-sans text-xs tracking-[0.2em] uppercase text-[#738b81] mb-2 font-bold">Mark Your Calendar</p>
             <h2 class="font-serif text-4xl text-[#ff9380] mb-10 text-glow">Important Details</h2>
@@ -832,7 +793,7 @@
                         nav.classList.add('opacity-100', 'translate-y-0');
                     }
                 }, 1000);
-            }, 3400);
+            }, 3000); // Shorter wait time to match the new fluid split animation
         }
 
         // Nav Menu Toggle Function
