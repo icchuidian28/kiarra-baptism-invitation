@@ -695,31 +695,127 @@
     <!-- NINANG MODAL -->
     <div id="ninangModal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-[#2d4a3e]/40 backdrop-blur-md transition-opacity duration-300 opacity-0" id="ninangBackdrop" onclick="closeModal('ninangModal')"></div>
-        <div class="relative bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] w-full max-w-sm max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninangContent">
+        <div class="relative bg-white/90 backdrop-blur-xl p-6 md:p-8 rounded-[2.5rem] w-full max-w-md max-h-[75vh] flex flex-col shadow-2xl border-4 border-white transform transition-all duration-300 scale-95 opacity-0" id="ninangContent">
             <h3 class="font-serif text-4xl italic text-[#ff9380] mb-4 text-center border-b-2 border-[#ffe5d9] pb-4 flex-shrink-0">Ninang</h3>
             
             <div class="overflow-y-auto custom-scrollbar flex-grow pr-2">
-                <ul class="font-sans text-[#2d4a3e] space-y-4 text-sm text-center font-bold">
-                    <li>Cathyrine Manaog</li>
-                    <li>Jailyn Gaille Emperado</li>
-                    <li>Joyce Ann Balingbing</li>
-                    <li>Jhanmariefer Viesca</li>
-                    <li>Claire Ann Fabian</li>
-                    <li>Mary Joyce Laviña</li>
-                    <li>Mayzel Juliano</li>
-                    <li>Avegail Cipcon</li>
-                    <li>Novijil Ramos</li>
-                    <li>Chaztyn Campanilla</li>
-                    <li>Nathalie Moron</li>
-                    <li>Ira Celiz</li>
-                    <li>Riena Ella Nobleza</li>
-                    <li>Rosey Cruz</li>
-                    <li>Styphanie Nabua</li>
-                    <li>Trisha Mae Emperado</li>
-                    <li>Jeah Tagudar</li>
-                    <li>Mary Santos</li>
-                    <li>Trisha Ramos</li>
-                </ul>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-3 pt-2 pb-4">
+                    
+                    <!-- 1 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="1.jpg" alt="Cathyrine" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Cathyrine</span>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="2.jpg" alt="Jailyn" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Jailyn</span>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="3.jpg" alt="Trisha Mae" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Trisha Mae</span>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="4.jpg" alt="Joyce" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Joyce</span>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="5.jpg" alt="Jhanmariefer" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Jhanmariefer</span>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="6.jpg" alt="Claire" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Claire</span>
+                    </div>
+
+                    <!-- 7 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="7.jpg" alt="Joyce" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Joyce</span>
+                    </div>
+
+                    <!-- 8 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="8.jpg" alt="Mayzel" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Mayzel</span>
+                    </div>
+
+                    <!-- 9 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="9.jpg" alt="Avegail" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Avegail</span>
+                    </div>
+
+                    <!-- 10 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="10.jpg" alt="Trisha" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Trisha</span>
+                    </div>
+
+                    <!-- 11 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="11.jpg" alt="Mary" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Mary</span>
+                    </div>
+
+                    <!-- 12 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="12.jpg" alt="Novi" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Novi</span>
+                    </div>
+
+                    <!-- 13 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="13.jpg" alt="Chaztyn" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Chaztyn</span>
+                    </div>
+
+                    <!-- 14 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="14.jpg" alt="Nathalie" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Nathalie</span>
+                    </div>
+
+                    <!-- 15 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="15.jpg" alt="Ira" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Ira</span>
+                    </div>
+
+                    <!-- 16 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="16.jpg" alt="Ella" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Ella</span>
+                    </div>
+
+                    <!-- 17 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="17.jpg" alt="Rosey" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Rosey</span>
+                    </div>
+
+                    <!-- 18 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="18.jpg" alt="Styphanie" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Styphanie</span>
+                    </div>
+
+                    <!-- 19 -->
+                    <div class="flex flex-col items-center text-center gap-2">
+                        <img src="19.jpg" alt="Jeah" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-xs font-bold leading-tight px-1">Jeah</span>
+                    </div>
+
+                </div>
             </div>
 
             <button onclick="closeModal('ninangModal')" class="mt-6 w-full bg-[#ffb5a7] text-white font-sans text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-full shadow-lg hover:bg-[#ff9380] transition-colors flex-shrink-0 font-bold">
