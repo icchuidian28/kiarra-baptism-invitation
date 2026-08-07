@@ -253,6 +253,15 @@
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 229, 217, 0.3); border-radius: 10px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #ffb5a7; border-radius: 10px; }
+
+        /* Added sparkle animation for elegant image frame */
+        .whimsical-sparkle {
+            animation: envelope-sparkle 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes envelope-sparkle {
+            0% { transform: scale(0.7) rotate(0deg); opacity: 0.6; }
+            100% { transform: scale(1.1) rotate(10deg); opacity: 1; }
+        }
     </style>
 </head>
 <body class="font-sans antialiased relative selection:bg-pink-200 locked-scroll">
@@ -625,8 +634,31 @@
         </section>
 
         <!-- SECTION 6: Final Image & Goodbye -->
-        <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 pb-24 space-y-12">
-            <h2 class="font-script text-5xl md:text-6xl text-[#2d4a3e] reveal delay-200 leading-tight text-glow">
+        <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 pb-24 space-y-8">
+            
+            <!-- Elegant Framed Image -->
+            <div class="relative w-full max-w-sm mx-auto reveal z-10">
+                <!-- Soft glow -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#ffbfae] to-[#e8e8f2] rounded-[3rem] blur-xl opacity-60 transform scale-105 -z-10"></div>
+                
+                <!-- White Outer Frame -->
+                <div class="relative bg-white p-2 md:p-3 rounded-[3rem] shadow-2xl">
+                    <!-- Inner Elegant Border -->
+                    <div class="border-2 border-[#ffe5d9] rounded-[2.5rem] overflow-hidden relative">
+                        <img src="kiarra6.jpg" alt="Baby Kiarra" class="w-full h-auto aspect-[4/5] object-cover hover:scale-105 transition-transform duration-1000" onerror="this.outerHTML='<div class=\'w-full aspect-[4/5] bg-white/50 flex items-center justify-center text-[#ff9380] font-sans text-sm\'>kiarra6.jpg here</div>'">
+                    </div>
+                </div>
+                
+                <!-- Whimsical sparkles over the image corners -->
+                <svg class="absolute -top-4 -right-4 w-10 h-10 text-[#fadb7f] whimsical-sparkle z-20" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
+                </svg>
+                <svg class="absolute -bottom-2 -left-4 w-8 h-8 text-[#ffb5a7] whimsical-sparkle" style="animation-delay: 0.5s;" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50 0 C50 35 65 50 100 50 C65 50 50 65 50 100 C50 65 35 50 0 50 C35 50 50 35 50 0 Z"/>
+                </svg>
+            </div>
+
+            <h2 class="font-script text-5xl md:text-6xl text-[#2d4a3e] reveal delay-200 leading-tight text-glow mt-8">
                 See you on my<br>
                 <span class="text-[#ff9380]">special day!</span>
             </h2>
@@ -729,61 +761,61 @@
 
                     <!-- 12 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="placeholder.jpg" alt="Isaac Timothy" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Timothy Isaac" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Timothy Isaac</span>
                     </div>
 
                     <!-- 13 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="13m.jpg" alt="Joel Batomalaque" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Joel Batomalaque" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Joel Batomalaque</span>
                     </div>
 
                     <!-- 14 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="14m.jpg" alt="Arvin Rosette" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Arvin Rosette" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Arvin Rosette</span>
                     </div>
 
                     <!-- 15 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="15m.jpg" alt="Cj Bacud" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Cj Bacud" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Cj Bacud</span>
                     </div>
 
                     <!-- 16 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="16m.jpg" alt="Ferdausi Bayao" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Ferdausi Bayao" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Ferdausi Bayao</span>
                     </div>
 
                     <!-- 17 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="17m.jpg" alt="Ruben Carandang" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Ruben Carandang" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Ruben Carandang</span>
                     </div>
 
                     <!-- 18 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="18m.jpg" alt="Ram Genete" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="RAM Genete" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">RAM Genete</span>
                     </div>
 
                     <!-- 19 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="19m.jpg" alt="Ken Vincent Batac" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Ken Vincent Batac" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Ken Vincent Batac</span>
                     </div>
 
                     <!-- 20 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="20m.jpg" alt="Micheal Angelo Lugo" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Micheal Angelo Lugo" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Micheal Angelo Lugo</span>
                     </div>
 
                     <!-- 21 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="21m.jpg" alt="Dustin Belmonte" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Dustin Belmonte" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Dustin Belmonte</span>
                     </div>
 
@@ -795,7 +827,7 @@
 
                     <!-- 23 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="23m.jpg" alt="Mico Fondevilla" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
+                        <img src="placeholder.jpg" alt="Mico Fondevilla" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#e8e8f2]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23e8e8f2\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%238e8eba\'>👔</text></svg>'">
                         <span class="font-sans text-[#2d4a3e] text-sm font-bold">Mico Fondevilla</span>
                     </div>
 
@@ -819,8 +851,8 @@
                     
                     <!-- 1 -->
                     <div class="flex items-center gap-4 bg-white/50 border border-white rounded-2xl p-2 shadow-sm hover:scale-[1.02] transition-transform">
-                        <img src="1.jpg" alt="Cathyrine De Castro" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
-                        <span class="font-sans text-[#2d4a3e] text-sm font-bold">Cathyrine De Castro</span>
+                        <img src="1.jpg" alt="Cathyrine Manaog" class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm flex-shrink-0 bg-[#fcd5ce]" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23fcd5ce\'/><text x=\'50\' y=\'55\' font-size=\'45\' text-anchor=\'middle\' dominant-baseline=\'middle\' fill=\'%23d19a9f\'>🌸</text></svg>'">
+                        <span class="font-sans text-[#2d4a3e] text-sm font-bold">Cathyrine Manaog</span>
                     </div>
 
                     <!-- 2 -->
